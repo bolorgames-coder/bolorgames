@@ -2200,6 +2200,16 @@
     </div>
     <div class="mm-intent-grid" id="mmIntentGrid"></div>
     <button class="mm-start-btn" style="width:100%;margin-top:20px;" onclick="mmConfirmIntent()">Үргэлжлүүлэх →</button>
+
+    <div class="mm-comments-section">
+      <div class="mm-comments-title">💬 Хүмүүс бие биедээ туслах хэсэг</div>
+      <div class="mm-comments-sub">Мэргэжлээ сонгоход бэрхшээлтэй байгаа бол доор асуугаарай, эсвэл өөрийн туршлагаараа бусдад туслаарай.</div>
+      <div class="mm-comment-form">
+        <textarea class="mm-comment-inp" id="mmCommentInpIntent" placeholder="Коммент бичих…" rows="2" maxlength="500"></textarea>
+        <button class="mm-comment-btn" onclick="mmPostComment('mmCommentInpIntent')">Илгээх</button>
+      </div>
+      <div class="mm-comments-list"></div>
+    </div>
   </div>
 </div>
 
