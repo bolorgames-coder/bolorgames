@@ -1,0 +1,320 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ══ ТУСЛАХ ФУНКЦУУД ══
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    // Админыг СЕРВЕР талд имэйлээр шалгана (client-side isAdmin-д итгэхгүй)
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.email == 'bolorgames@gmail.com';
+    }
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+    // Subscription-той холбоотой талбаруудыг хэрэглэгч ӨӨРӨӨ өөрчлөхийг хориглоно
+    function subscriptionFieldsUnchanged() {
+      return !request.resource.data.diff(resource.data).affectedKeys()
+        .hasAny(['subscriptionActive', 'subscriptionExpiry', 'subscriptionPlan', 'subscriptionStart']);
+    }
+    // ══ ХЭРЭГЛЭГЧИД ══
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId)
+        && !(request.resource.data.get('subscriptionActive', false) == true);
+      allow update: if (isOwner(userId) && subscriptionFieldsUnchanged()) || isAdmin();
+      allow delete: if isAdmin();
+    }
+    // ══ Нийтэд нээлттэй профайл (нэр + зураг ЗӨВХӨН) — лидерборд гэх мэт газарт өөр хэрэглэгчийн
+    // нэр/зургийг харуулахад ашиглана. Имэйл, эрхийн мэдээлэл энд ОРОХГҮЙ. ══
+    match /user_public/{userId} {
+      allow read: if true;
+      allow write: if isSignedIn() && request.auth.uid == userId;
+    }
+    // ══ QUIZRUSH — хэрэглэгчийн хариултын лог (Миний бүртгэл — Шалгалтын бэлтгэл статистикт ашиглана) ══
+    match /qr_answer_log/{logId} {
+      allow read: if isSignedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow update: if false;
+      allow delete: if isAdmin() || (isSignedIn() && resource.data.uid == request.auth.uid);
+    }
+    // ══ QUIZRUSH — фолдер тус бүрийн нэгтгэсэн тоо (Лидерборд) — зөвхөн тоо/нэр/зураг, quiz агуулга ороогүй тул нээлттэй унших ══
+    match /qr_folder_stats/{statId} {
+      allow read: if true;
+      allow write: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+    }
+    // ══ MYMAJOR — хамтын коммент хэсэг (хүмүүс бие биедээ туслах) ══
+    match /mm_comments/{commentId} {
+      allow read: if true;
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow update: if false;
+      allow delete: if isAdmin() || (isSignedIn() && resource.data.uid == request.auth.uid);
+    }
+    // ══ MUSIC QUIZ ТОГЛОЛТУУД ══
+    match /rounds/{roundId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAdmin()
+        || (isSignedIn() && resource.data.ownerId == request.auth.uid);
+    }
+    // ══ QUANTUM QUIZ ТОГЛОЛТУУД ══
+    match /quantum_rounds/{roundId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAdmin()
+        || (isSignedIn() && resource.data.ownerId == request.auth.uid);
+    }
+    // ══ ЛОГО, ҮГИЙН САН (зөвхөн админ удирдана) ══
+    match /logo_items/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /word_items/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /word_items_en/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /word_items_ru/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    // ══ ОНООНЫ САМБАРУУД ══
+    match /flag_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+    match /logo_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+    match /memory_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+    match /word_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // ══ QUIZRUSH — асуултын сан ══
+    match /live_quizzes/{quizId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAdmin()
+        || (isSignedIn() && resource.data.ownerId == request.auth.uid);
+    }
+
+    // ══ QUIZRUSH — бодит цагийн тэмцээний session ══
+    match /live_sessions/{sessionId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.hostId == request.auth.uid;
+      allow update: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+      allow delete: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+
+      match /players/{playerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ══ COUNTDASH — тоолгын сан ══
+    match /count_quizzes/{quizId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isAdmin()
+        || (isSignedIn() && resource.data.ownerId == request.auth.uid);
+    }
+
+    // ══ COUNTDASH — бодит цагийн тэмцээний session ══
+    match /count_sessions/{sessionId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.hostId == request.auth.uid;
+      allow update: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+      allow delete: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+
+      match /players/{playerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ══ QUIZRUSH — админд зориулсан фолдер (тоглолт багцлах) ══
+    match /live_folders/{folderId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ══ STARQUIZ — алдартай хүмүүсийн сан (зөвхөн админ удирдана) ══
+    match /star_items/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ══ STARQUIZ — ганцаараа тоглосон оноо (лидерборд) ══
+    match /star_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // ══ STARQUIZ — бодит цагийн тэмцээний session ══
+    match /star_sessions/{sessionId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.hostId == request.auth.uid;
+      allow update: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+      allow delete: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+
+      match /players/{playerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ══ KIDS QUIZ — Хүрд цээжлэх — ганцаарчилсан оноо (лидерборд) ══
+    match /mult_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // ══ Нийтийн тохиргоо — админы UID зэрэг (зөвхөн admin бичнэ, бүгд уншина) ══
+    match /app_config/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ══ F1 READY — ганцаарчилсан оноо (лидерборд) ══
+    match /f1_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // ══ F1 READY — бодит цагийн тэмцээний session ══
+    match /f1_sessions/{sessionId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.hostId == request.auth.uid;
+      allow update: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+      allow delete: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+
+      match /players/{playerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /targets/{targetId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ══ KIDS QUIZ — Хүрд цээжлэх — бодит цагийн тэмцээний session ══
+    match /mult_sessions/{sessionId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.hostId == request.auth.uid;
+      allow update: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+      allow delete: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+
+      match /players/{playerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // ══ MATH OF A2MB — ганцаарчилсан оноо (лидерборд) ══
+    match /tw_scores/{scoreId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // ══ MATH OF A2MB — түвшин тус бүрийн бодлого+хариултын сан (зөвхөн админ удирдана) ══
+    match /tw_levels/{levelId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ══ MATH OF A2MB — бодит цагийн татлагын session ══
+    match /tw_sessions/{sessionId} {
+      allow read: if true;
+      allow create: if isSignedIn()
+        && request.resource.data.hostId == request.auth.uid;
+      allow update: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+      allow delete: if isAdmin()
+        || (isSignedIn() && resource.data.hostId == request.auth.uid);
+
+      match /players/{playerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+      match /answers/{answerId} {
+        allow read: if true;
+        allow create: if true;
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // Бусад бүх зам — хаалттай
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
