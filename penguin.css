@@ -1,0 +1,134 @@
+/* ══════════════════════════════════════════
+   ПИНГВИНЫ АНИМЭЙШН - ЗӨВХӨН НҮҮР ХУУДСАНД
+══════════════════════════════════════════ */
+
+/* ЭХЛЭЭД НУУГДАНА */
+.penguin-mascot {
+  display: none;
+}
+
+/* ЗӨВХӨН НҮҮР ХУУДАС (landingScreen) АЖИЛТАЙ БАЙХАД ГАРНА */
+#landingScreen.active ~ .penguin-mascot {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  pointer-events: none;
+  filter: drop-shadow(0 0 12px rgba(0, 245, 255, 0.3));
+}
+
+.penguin-img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+  /* УДААН: 8s → 15s болгов, ДАВТАХ: forwards → infinite */
+  animation: penguinWalk 15s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite,
+             penguinBobble 0.8s ease-in-out infinite 1s;
+}
+
+@keyframes penguinWalk {
+  0% {
+    transform: translateX(-250px) translateY(0px) scaleX(-1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100vw) translateY(-20px) scaleX(-1);
+    opacity: 0;
+  }
+  /* 2-р удаа - баруунаас орно */
+  50% {
+    transform: translateX(100vw) translateY(-20px) scaleX(1);
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-250px) translateY(-20px) scaleX(1);
+    opacity: 0;
+  }
+}
+
+@keyframes penguinBobble {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  75% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.penguin-mascot {
+  animation: penguinSway 1.2s ease-in-out infinite;
+}
+
+@keyframes penguinSway {
+  0% {
+    transform: skewY(-0.5deg);
+  }
+  50% {
+    transform: skewY(0.5deg);
+  }
+  100% {
+    transform: skewY(-0.5deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .penguin-img {
+    width: 140px;
+    height: 140px;
+  }
+  
+  @keyframes penguinWalk {
+    0% {
+      transform: translateX(-200px) translateY(0px) scaleX(-1);
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    45% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(100vw) translateY(-15px) scaleX(-1);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(100vw) translateY(-15px) scaleX(1);
+      opacity: 0;
+    }
+    55% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-200px) translateY(-15px) scaleX(1);
+      opacity: 0;
+    }
+  }
+}
