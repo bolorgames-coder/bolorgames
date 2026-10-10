@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="mn"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Security Headers -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<!-- End Security Headers -->
+<title>🎮 Bolor Games — Монголын Онлайн Тоглоом Платформ</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Bolor Games — Монголын онлайн тоглоом платформ. Music Quiz, Quantum Quiz, Memory Cards, Flag Quiz, Logo Quiz тоглоомуудыг онлайнаар тоглоорой. Монголын хамгийн сонирхолтой квиз тоглоомууд.">
+<meta name="keywords" content="bolor games, болор геймс, монгол тоглоом, онлайн тоглоом, music quiz, flag quiz, logo quiz, quantum quiz, memory cards, квиз тоглоом, монголын тоглоом">
+<meta name="author" content="Bolor Games">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://bolorgames.com/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- PWA — Апп болгож суулгах боломж -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#01226d">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-apple-touch.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="bolorgames">
+
+<!-- Open Graph (Social Share) -->
+<meta property="og:title" content="🎮 Bolor Games — Монголын Тоглоом Платформ">
+<meta property="og:description" content="Music Quiz, Quantum Quiz, Memory Cards, Flag Quiz, Logo Quiz — онлайнаар тоглоорой! Монголын хамгийн сонирхолтой квиз тоглоомууд.">
+<meta property="og:url" content="https://bolorgames.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="mn_MN">
+<meta property="og:site_name" content="Bolor Games">
+<meta property="og:image" content="https://bolorgames.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bolor Games — Монголын онлайн тоглоом платформ">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bolor Games — Монголын Тоглоом Платформ">
+<meta name="twitter:description" content="Music Quiz, Quantum Quiz, Memory Cards, Flag Quiz, Logo Quiz тоглоомуудыг онлайнаар тоглоорой!">
+<meta name="twitter:image" content="https://bolorgames.com/og-image.png">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bolor Games",
+  "alternateName": "Болор Геймс",
+  "url": "https://bolorgames.com",
+  "description": "Монголын онлайн тоглоом платформ — Music Quiz, Quantum Quiz, Memory Cards, Flag Quiz, Logo Quiz",
+  "inLanguage": "mn",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bolor Games",
+    "url": "https://bolorgames.com"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Exo+2:wght@400;700;900&family=Share+Tech+Mono&family=Alex+Brush&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css?v=20261010b">
+</head>
+<body>
+
+<!-- QQ Background elements -->
+<div class="bg-scientists" id="bgScientists"></div>
+<div class="mov-poster-bg" id="mvPosterBg"></div>
+<div class="qq-grid" id="qqGrid"></div>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Дизайн солих (Цайвар/Бараан)">
+  <span id="themeToggleIcon">☀️</span>
+</button>
+
+<!-- MUSIC BTN -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Хөгжим асаах/унтраах">
+  <span id="musicIcon">🎵</span>
+  <span class="note-ring"></span>
+</button>
+
+<!-- LOGIN -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <button class="login-close" onclick="closeLogin()">✕</button>
+    <div class="login-logo">🎮 НЭВТРЭХ</div>
+    <div class="login-tabs">
+      <button class="login-tab active" id="tabLoginBtn" onclick="switchAuthMode('login')">Нэвтрэх</button>
+      <button class="login-tab" id="tabRegisterBtn" onclick="switchAuthMode('register')">Шинээр бүртгүүлэх</button>
+    </div>
+    <div class="login-sub" id="loginSub">Тоглолт тоглохын тулд нэвтэрнэ үү</div>
+    <div class="login-lbl">Email</div>
+    <input class="login-inp" id="loginEmail" type="email" placeholder="email@example.com" autocomplete="email">
+    <div id="regExtraFields" style="display:none;">
+      <div class="login-lbl">Нэр</div>
+      <input class="login-inp" id="regName" type="text" placeholder="Овог нэрээ оруулна уу..." autocomplete="name">
+      <div class="login-lbl">Утасны дугаар</div>
+      <input class="login-inp" id="regPhone" type="tel" placeholder="9911XXXX" autocomplete="tel">
+    </div>
+    <div class="login-lbl">Нууц үг</div>
+    <input class="login-inp" id="loginPass" type="password" placeholder="Нууц үг..." autocomplete="current-password" onkeydown="if(event.key==='Enter')handleAuthSubmit()">
+    <div id="regConfirmWrap" style="display:none;">
+      <div class="login-lbl">Нууц үг давтах</div>
+      <input class="login-inp" id="loginPassConfirm" type="password" placeholder="Нууц үгээ давтана уу..." autocomplete="new-password" onkeydown="if(event.key==='Enter')handleAuthSubmit()">
+    </div>
+    <button class="login-btn" id="authSubmitBtn" onclick="handleAuthSubmit()">→ НЭВТРЭХ</button>
+    <div id="forgotPassWrap" style="margin-top:8px;text-align:center;">
+      <a href="#" onclick="doForgotPassword();return false;" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--muted);text-decoration:underline;cursor:pointer;">Нууц үгээ мартсан уу?</a>
+    </div>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="nav-logo" onclick="showLanding()">BOLOR<span class="dot">.</span>GAMES</div>
+  <div class="nav-links">
+    <button class="nav-admin" id="loginBtn" onclick="loginBtnClick()">🔐 Нэвтрэх</button>
+    <div class="nav-games-wrap">
+      <button class="nav-link nav-games-btn" id="navGamesBtn" onclick="toggleGamesMenu(event)">🎮 Games <span class="nav-games-caret">▾</span></button>
+      <div class="nav-games-menu" id="navGamesMenu">
+        <button class="nav-link qr-style" id="navLR" onclick="showLrHome(null)">🗣️ LinguaRush</button>
+        <button class="nav-link" id="navMQ" onclick="showMQHome()">🎵 Music Quiz</button>
+        <button class="nav-link mv-style" id="navMV" onclick="showMVHome()">🎬 Movie Quiz</button>
+        <button class="nav-link qq-style" id="navQQ" onclick="showQQHome()">⚛ Quantum Quiz</button>
+        <button class="nav-link mc-style" id="navMC" onclick="showMCHome()">🃏 Memory Cards</button>
+        <button class="nav-link fl-style" id="navFL" onclick="showFLHome()">🚩 Flag Quiz</button>
+        <button class="nav-link lq-style" id="navLQ" onclick="showLQHome()">🏷️ Logo Quiz</button>
+        <button class="nav-link wq-style" id="navWQ" onclick="showWQHome()">🔤 Word Quiz</button>
+        <button class="nav-link qr-style" id="navQR" onclick="showQRHome()">⚡ QuizRush</button>
+        <button class="nav-link cd-style" id="navCD" onclick="showCDHome()">🔢 CountDash</button>
+        <button class="nav-link sq-style" id="navSQ" onclick="showSQHome()">⭐ StarQuiz</button>
+        <button class="nav-link f1-style" id="navF1" onclick="showF1Home()">🏁 F1 Ready</button>
+        <button class="nav-link mo-style" id="navMO" onclick="showMOHome()" >🧮 Математик араатан</button>
+        <div class="nav-games-divider"></div>
+        <button class="nav-admin" id="navAdminDash" onclick="showAdminDash()" style="display:none;">👥 Хэрэглэгчид</button>
+        <button class="nav-admin" id="navAdminStats" onclick="showAdminStats()" style="display:none;">📊 Статистик</button>
+        <button class="nav-admin" id="navAdminLogos" onclick="showLogoAdmin()" style="display:none;">🖼️ Лого удирдах</button>
+        <button class="nav-admin" id="navAdminWords" onclick="showWordAdmin()" style="display:none;">📝 Үг удирдах</button>
+        <button class="nav-admin" id="navAdminStars" onclick="showStarAdmin()" style="display:none;">⭐ Од удирдах</button>
+        <button class="nav-admin" id="navSubscribe" onclick="openQPay()" style="display:none;">⭐ Subscription</button>
+        <button class="nav-admin" id="navMyPlan" onclick="showMyAccount()" style="display:none;background:rgba(167,139,250,.15);border-color:rgba(167,139,250,.4);color:#a78bfa;">👤 Миний бүртгэл</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ SUBSCRIPTION WARNING BANNER ══ -->
+<div class="sub-warn-banner" id="subWarnBanner">
+  <div class="sub-warn-text" id="subWarnText"></div>
+  <button class="sub-warn-btn" onclick="openQPay()">⭐ СУНГАХ</button>
+  <button class="sub-warn-close" onclick="document.getElementById('subWarnBanner').classList.remove('show')">✕</button>
+</div>
+
+
+<!-- ══ SUBSCRIPTION REQUIRED MODAL ══ -->
+<div class="sub-req-overlay" id="subReqOverlay">
+  <div class="sub-req-box">
+    <div class="sub-req-hero">
+      <div class="sub-req-icon">⭐</div>
+      <div class="sub-req-title">Premium шаардлагатай</div>
+      <div class="sub-req-subtitle">Энэ тоглоомыг тоглохын тулд<br>Bolor Games Premium идэвхжүүлнэ үү</div>
+    </div>
+    <div class="sub-req-perks">
+      <div class="sub-req-perk">
+        <div class="sub-req-perk-icon">🎮</div>
+        <span>Бүх 6 тоглоомд хязгааргүй нэвтрэх</span>
+      </div>
+      <div class="sub-req-perk">
+        <div class="sub-req-perk-icon">🏆</div>
+        <span>Leaderboard-д оролцож, дээд оноо тэмцэх</span>
+      </div>
+      <div class="sub-req-perk">
+        <div class="sub-req-perk-icon">🔤</div>
+        <span>1000+ үг, 200+ лого, дэлхийн бүх туг</span>
+      </div>
+      <div class="sub-req-perk">
+        <div class="sub-req-perk-icon">🎵</div>
+        <span>Music Quiz — дуу таах хязгааргүй тоглолт</span>
+      </div>
+    </div>
+    <div class="sub-req-divider"></div>
+    <div class="sub-req-pricing">
+      <div class="sub-req-price" onclick="subReqSelect(1,18000,this)">
+        <div class="sub-req-price-label">1 сар</div>
+        <div class="sub-req-price-val">₮18,000</div>
+      </div>
+      <div class="sub-req-price best" onclick="subReqSelect(3,45000,this)">
+        <div class="sub-req-price-label">3 сар ✦</div>
+        <div class="sub-req-price-val">₮45,000</div>
+        <div class="sub-req-price-save">сард ₮15,000</div>
+      </div>
+      <div class="sub-req-price" onclick="subReqSelect(6,90000,this)">
+        <div class="sub-req-price-label">6 сар</div>
+        <div class="sub-req-price-val">₮90,000</div>
+        <div class="sub-req-price-save" style="color:#34d399;">сард ₮15,000</div>
+      </div>
+    </div>
+    <div class="sub-req-actions">
+      <button class="sub-req-main-btn" id="subReqMainBtn" onclick="subReqPay()">
+        ⭐ PREMIUM АВАХ — ₮45,000
+      </button>
+      <button class="sub-req-close-btn" onclick="hideSubReq()">
+        Дараа нь авна
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SUBSCRIPTION INFO MODAL ══ -->
+<div class="sub-info-overlay" id="subInfoOverlay" onclick="if(event.target===this)closeSubInfo()">
+  <div class="sub-info-box">
+    <div class="sub-info-icon" id="subInfoIcon">⭐</div>
+    <div class="sub-info-status" id="subInfoStatus">ИДЭВХТЭЙ</div>
+    <div class="sub-info-days" id="subInfoDays">—</div>
+    <div class="sub-info-days-label">ӨДӨР ҮЛДСЭН</div>
+    <div class="sub-info-progress"><div class="sub-info-progress-bar" id="subInfoBar" style="width:0%"></div></div>
+    <div class="sub-info-row">
+      <span class="sub-info-label">Эхэлсэн</span>
+      <span class="sub-info-value" id="subInfoStart">—</span>
+    </div>
+    <div class="sub-info-row">
+      <span class="sub-info-label">Дуусах</span>
+      <span class="sub-info-value" id="subInfoEnd">—</span>
+    </div>
+    <div class="sub-info-row">
+      <span class="sub-info-label">Тариф</span>
+      <span class="sub-info-value" id="subInfoPlan">—</span>
+    </div>
+    <div class="sub-info-btns">
+      <button class="sub-info-renew" onclick="closeSubInfo();openQPay()">⭐ Сунгах</button>
+      <button class="sub-info-close" onclick="closeSubInfo()">Хаах</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MY ACCOUNT (Миний бүртгэл) ══ -->
+<div id="myAccountScreen" class="screen">
+  <div class="acc-wrap">
+    <button class="qr-back-btn" id="accBackBtn" style="margin-bottom:16px;" onclick="showLanding()">← Буцах</button>
+    <div class="acc-admin-banner" id="accAdminBanner" style="display:none;"></div>
+    <div class="acc-header">
+      <div class="acc-avatar-wrap">
+        <img id="accAvatarImg" class="acc-avatar-img" src="" alt="Profile" style="display:none;" onerror="this.style.display='none';document.getElementById('accAvatarPlaceholder').style.display='flex';">
+        <div id="accAvatarPlaceholder" class="acc-avatar-placeholder">👤</div>
+        <label class="acc-avatar-edit" for="accAvatarInp">📷</label>
+        <input type="file" id="accAvatarInp" accept="image/*" style="display:none;" onchange="accUploadAvatar(this)">
+      </div>
+      <div class="acc-name-wrap">
+        <input class="acc-name-inp" id="accNameInp" type="text" placeholder="Нэр">
+        <button class="acc-name-save" onclick="accSaveName()">✓ Хадгалах</button>
+      </div>
+      <div class="acc-email" id="accEmailTxt">—</div>
+    </div>
+
+    <!-- Миний эрх (subscription) -->
+    <div class="acc-section">
+      <div class="acc-section-title">🎫 Миний эрх</div>
+      <div class="acc-plan-card" id="accPlanCard">Ачааллаж байна…</div>
+    </div>
+
+    <!-- Шалгалтын бэлтгэл -->
+    <div class="acc-section">
+      <div class="acc-section-title">📊 Шалгалтын бэлтгэл</div>
+      <div class="acc-stats-status" id="accStatsStatus">Ачааллаж байна…</div>
+      <div class="acc-stats-grid" id="accStatsGrid" style="display:none;">
+        <div class="acc-stat-card"><div class="acc-stat-num" id="accStatToday">0</div><div class="acc-stat-label">ӨНӨӨДӨР</div></div>
+        <div class="acc-stat-card"><div class="acc-stat-num" id="accStatWeek">0</div><div class="acc-stat-label">СҮҮЛИЙН 7 ХОНОГ</div></div>
+        <div class="acc-stat-card"><div class="acc-stat-num" id="accStatTotal">0</div><div class="acc-stat-label">НИЙТ АЖИЛЛАСАН</div></div>
+        <div class="acc-stat-card acc-stat-card-accent"><div class="acc-stat-num" id="accStatAccuracy">0%</div><div class="acc-stat-label">ДУНДАЖ ГҮЙЦЭТГЭЛ</div></div>
+      </div>
+
+      <div class="acc-subtitle" id="accWrongTitle" style="display:none;">❌ Хамгийн их давтагдаж алдсан 10 асуулт</div>
+      <div class="acc-wrong-top" id="accWrongTop"></div>
+
+      <div class="acc-subtitle" id="accFolderTitle" style="display:none;">📁 Фолдероор задаргаа</div>
+      <div class="acc-folder-list" id="accFolderList"></div>
+    </div>
+
+    <!-- Бусад тоглоом -->
+    <div class="acc-section">
+      <div class="acc-section-title">🎮 Бусад тоглоом</div>
+      <div class="acc-othergames-note">Бусад тоглоомын (F1 Ready, StarQuiz гэх мэт) статистик тус тусдаа тоглоомын лидерборд хэсэгт харагдана. Эндэх нэгдсэн статистик удахгүй нэмэгдэнэ.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SHARE MODAL ══ -->
+<div class="share-overlay" id="shareOverlay" onclick="if(event.target===this)hideShare()">
+  <div class="share-box">
+    <div class="share-handle"></div>
+    <div class="share-title">📤 ОНООГОО ХУВААЛЦАХ</div>
+    <div class="share-score-card">
+      <div class="share-score-text" id="shareScoreText"></div>
+    </div>
+    <div class="share-btns">
+      <a class="share-btn" id="shareFB" href="#" target="_blank" rel="noopener" onclick="shareToFB(event)">
+        <div class="share-btn-icon" style="background:#1877f2;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </div>
+        <div class="share-btn-name">Facebook</div>
+      </a>
+      <a class="share-btn" id="shareIG" href="#" target="_blank" rel="noopener" onclick="shareToIG(event)">
+        <div class="share-btn-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="share-btn-name">Instagram</div>
+      </a>
+      <a class="share-btn" id="shareMS" href="#" target="_blank" rel="noopener" onclick="shareToMessenger(event)">
+        <div class="share-btn-icon" style="background:linear-gradient(135deg,#0084ff,#00b3ff);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>
+        </div>
+        <div class="share-btn-name">Messenger</div>
+      </a>
+    </div>
+    <button class="share-copy-btn" id="shareCopyBtn" onclick="shareCopy()">
+      📋 Хуулбарлах
+    </button>
+    <button class="share-close" onclick="hideShare()">Хаах</button>
+  </div>
+</div>
+
+<!-- ══ ERROR OVERLAY ══ -->
+<div class="error-overlay" id="errorOverlay">
+  <div class="error-icon">⚠️</div>
+  <div class="error-title" id="errorTitle">Алдаа гарлаа</div>
+  <div class="error-msg" id="errorMsg">Интернэт холболт тасарсан байна.</div>
+  <button class="error-retry" id="errorRetryBtn" onclick="hideError()">↺ Дахин оролдох</button>
+  <button class="error-dismiss" onclick="hideError()">Хаах</button>
+</div>
+
+<!-- ══ LOADING OVERLAY ══ -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text" id="loadingText">Ачаалж байна...</div>
+  <div class="loading-sub" id="loadingSub"></div>
+</div>
+
+<!-- ══ LANDING ══ -->
+<div id="landingScreen" class="screen active">
+  <div class="hero">
+    <div class="hero-badge">🎮 Game Platform</div>
+    <h1 class="hero-title">BOLOR<br>GAMES</h1>
+    <div class="hero-quote-wrap">
+      <div class="hero-quote">"Games aren't a bad thing — competition is a chance to grow."</div>
+      <div class="hero-signature">A&amp;M Printing Co LTD</div>
+    </div>
+    <div class="games-grid">
+      <div class="game-card" id="moLandingCard" style="--card-accent:#1A7F5A;" onclick="showMOHome()">
+        <span class="lr-new-tag">ШИНЭ</span>
+        <span class="game-card-icon">🧮</span>
+        <div class="game-card-title">МАТЕМАТИК АРААТАН</div>
+        <div class="game-card-desc">Олимпиадын бодлогуудыг өөрөө бодож, бодолтыг алхам алхмаар хар. Зүй тогтол, Дүрс хуваалтын 100, 100 level-ээр оноо цуглуулж, онооны самбарт өрсөл.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#1552C4;" onclick="showLrHome(null)">
+        <span class="lr-new-tag">ШИНЭ</span>
+        <span class="game-card-icon">🗣️</span>
+        <div class="game-card-title">LINGUARUSH</div>
+        <div class="game-card-desc">IELTS бэлтгэлийн бүрэн орчин. Түвшингээ тогтоо, Listening, Reading, Writing тест ажилла, эссэгээ AI-аар шалгуулж band оноогоо мэд.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:var(--cyan);" onclick="showMQHome()">
+        <span class="game-card-icon">🎵</span>
+        <div class="game-card-title">MUSIC QUIZ</div>
+        <div class="game-card-desc">Дуу таних тоглоом. Хөгжмийн мэдлэгээрээ найз нөхөд, гэр бүлийнхэнтэйгээ өрсөлдөж оноо цуглуулна.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#ffd700;" onclick="showMVHome()">
+        <span class="game-card-icon">🎬</span>
+        <div class="game-card-title">MOVIE QUIZ</div>
+        <div class="game-card-desc">Киноны хэсэг үзээд аль кино болохыг таана. Киноны мэдлэгээрээ өрсөлдөж оноо цуглуулна.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:var(--q-cyan);" onclick="showQQHome()">
+        <span class="game-card-icon">⚛️</span>
+        <div class="game-card-title">QUANTUM QUIZ</div>
+        <div class="game-card-desc">Шинжлэх ухааны асуулт хариулт. Физик, хими, математик — мэдлэгийн тоглоом.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#ffd700;" onclick="showMCHome()">
+        <span class="game-card-icon" style="color:#ffd700;letter-spacing:2px;"><span style="color:#ffd700;">♠</span><span style="color:#ff3b5c;">♥</span><span style="color:#ff3b5c;">♦</span><span style="color:#ffd700;">♣</span></span>
+        <div class="game-card-title">MEMORY CARDS</div>
+        <div class="game-card-desc">Хөзрийн дараалал санах тоглоом. Хугацаагаа хэмжиж, өрсөлдөгчидтэйгөө жагсаалтаар өрсөлдөнө.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#ff9500;" onclick="showLQHome()">
+        <span class="game-card-icon">🏷️</span>
+        <div class="game-card-title">LOGO QUIZ</div>
+        <div class="game-card-desc">Монгол болон дэлхийн алдартай брэндийн лого таах тоглоом. Easy, Medium, Hard, Expert гэсэн 4 түвшин.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#39ff14;" onclick="showWQHome()">
+        <span class="game-card-icon">🔤</span>
+        <div class="game-card-title">WORD QUIZ</div>
+        <div class="game-card-desc">Үсгүүдийн байршил солигдсон үгийг аль болох хурдан тааж олоорой. Цагтай уралдаарай!</div>
+        <span class="game-card-badge" style="background:rgba(57,255,20,.15);border:1px solid rgba(57,255,20,.4);color:#39ff14;">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow" style="color:#39ff14;">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#8b5cf6;" onclick="showQRHome()">
+        <span class="game-card-icon">⚡</span>
+        <div class="game-card-title">QUIZRUSH</div>
+        <div class="game-card-desc">Ангийн шууд тэмцээн! Утсаараа кодоор нэгдэж, хамгийн хурдан зөв хариулсан нь түрүүлнэ.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#10b981;" onclick="showCDHome()">
+        <span class="game-card-icon">🔢</span>
+        <div class="game-card-title">COUNTDASH</div>
+        <div class="game-card-desc">Дэлгэц дээр гарч буй дүрсийг хараад тоолоорой! Хамгийн хурдан зөв тоолсон нь түрүүлнэ.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#facc15;" onclick="showSQHome()">
+        <span class="game-card-icon">⭐</span>
+        <div class="game-card-title">STARQUIZ</div>
+        <div class="game-card-desc">Алдартай хүмүүсийн зургийг харж нэрийг нь тааж, эсвэл холилдсон үсгээс нэрийг бүтээ! Хамгийн хурдан таасан нь түрүүлнэ.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#ff1e1e;" onclick="showF1Home()">
+        <span class="game-card-icon">🏁</span>
+        <div class="game-card-title">F1 READY</div>
+        <div class="game-card-desc">3 улаан гэрэл асаад ногоон болонгуут цаг эхэлнэ! Сонгосон цагаа хамгийн нарийн тааруулж, реакцаа сорь.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+      <div class="game-card" style="--card-accent:#00e68c;" onclick="showFLHome()">
+        <span class="game-card-icon">🚩</span>
+        <div class="game-card-title">FLAG QUIZ</div>
+        <div class="game-card-desc">Дэлхийн 195 орны туг таах тоглоом. Хугацаагаа хэмжиж эсвэл цаг хязгаарлаж тоглоно.</div>
+        <span class="game-card-badge badge-live">▶ Тоглох боломжтой</span>
+        <span class="game-card-arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FAQ + CONTACT ══ -->
+  <div class="landing-info-section" id="landingInfoSection">
+
+    <!-- FAQ -->
+    <div class="landing-section-title">❓ Түгээмэл асуултууд</div>
+    <div class="faq-grid">
+
+      <div class="faq-item" onclick="faqToggle(this)">
+        <div class="faq-q">
+          <span class="faq-q-icon">🆕</span>
+          <span>Шинэ бүртгэл нээж тоглох заавар</span>
+          <span class="faq-toggle">▾</span>
+        </div>
+        <div class="faq-a">
+          <ol>
+            <li>Дээр баруун талд байгаа <b style="color:var(--cyan)">НЭВТРЭХ</b> товч дарна</li>
+            <li><b style="color:var(--cyan)">Бүртгүүлэх</b> хэсгийг сонгоно</li>
+            <li>Нэр, утасны дугаар, имэйл хаяг, өөрийн зохиосон нууц үгээ оруулна</li>
+            <li>Бүртгүүлсний дараа таны имэйл хаяг руу баталгаажуулах холбоос ирнэ — холбоос дээр дарж имэйлээ баталгаажуулна уу</li>
+            <li>Баталгаажуулсны дараа имэйл хаяг болон зохиосон нууц үгээрээ нэвтэрч орно уу</li>
+            <li>Тоглоомоо сонгоод эхэлнэ үү!</li>
+          </ol>
+          <div style="margin-top:8px;padding:10px;background:rgba(255,180,0,.08);border-radius:8px;font-size:11px;color:rgba(255,200,100,.8);">
+            ⚠️ Анхааруулга: Баталгаажуулах имэйл inbox-д ирээгүй бол спам (Spam/Junk) хавтсаа шалгаж үзээрэй.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="faqToggle(this)">
+        <div class="faq-q">
+          <span class="faq-q-icon">💳</span>
+          <span>Төлбөр төлөх заавар</span>
+          <span class="faq-toggle">▾</span>
+        </div>
+        <div class="faq-a">
+          <ol>
+            <li>Нэвтэрсний дараа дээр <b style="color:#ffd700">⭐ Subscription</b> товч гарч ирнэ</li>
+            <li>Хугацаагаа сонгоно: <b>1 сар ₮18,000</b> · <b>3 сар ₮45,000</b> · <b>6 сар ₮90,000</b></li>
+            <li>QPay QR код гарч ирнэ</li>
+            <li>QPay, банкны аппаараа QR уншуулж төлбөр төлнө</li>
+            <li>Төлбөр баталгаажсаны дараа тоглоомууд нээгдэнэ</li>
+          </ol>
+          <div style="margin-top:8px;padding:10px;background:rgba(255,215,0,.06);border-radius:8px;font-size:11px;color:rgba(255,255,255,.5);">
+            💡 Асуудал гарвал <b style="color:var(--cyan)">bolorgames@gmail.com</b> руу холбогдоно уу
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="faqToggle(this)">
+        <div class="faq-q">
+          <span class="faq-q-icon">🎮</span>
+          <span>Тоглолт зохиож тоглох заавар</span>
+          <span class="faq-toggle">▾</span>
+        </div>
+        <div class="faq-a">
+          <ol>
+            <li>Music Quiz эсвэл Quantum Quiz-ийг нээнэ</li>
+            <li><b style="color:var(--cyan)">+ Шинэ тоглолт үүсгэх</b> товч дарна</li>
+            <li>Тоглолтын нэр, ангилал оруулна</li>
+            <li>Асуулт, хариултуудаа нэмнэ</li>
+            <li>Зохиосон тоглолтоо найз нөхөдтэйгөө хуваалцаж хамт тоглоно!</li>
+          </ol>
+          <div style="margin-top:8px;padding:10px;background:rgba(57,255,20,.06);border-radius:8px;font-size:11px;color:rgba(255,255,255,.5);">
+            💡 Subscription-тэй хэрэглэгч бусдын тоглолтонд ч оролцох боломжтой
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="faqToggle(this)">
+        <div class="faq-q">
+          <span class="faq-q-icon">📱</span>
+          <span>Утасны дэлгэцэнд тохирох уу?</span>
+          <span class="faq-toggle">▾</span>
+        </div>
+        <div class="faq-a">
+          Тийм! Bolor Games бүх төхөөрөмжид тохирсон <b style="color:var(--cyan)">responsive</b> дизайнтай.<br><br>
+          Гар утас, таблет, компьютер — ямар ч дэлгэцэнд хэвийн ажиллана. Chrome, Safari, Firefox дэмждэг.
+          <div style="margin-top:8px;padding:10px;background:rgba(255,180,0,.08);border-radius:8px;font-size:11px;color:rgba(255,200,100,.8);">
+            ⚠️ Гар утасны жижиг дэлгэцэнд агуулга арай жижиг харагдах тул аль болох том дэлгэцэнд, ялангуяа компьютер болон бусад төхөөрөмжөө зурагтанд холбож тогловол илүү тохиромжтой.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="faqToggle(this)">
+        <div class="faq-q">
+          <span class="faq-q-icon">🏆</span>
+          <span>Leaderboard яаж ажилладаг вэ?</span>
+          <span class="faq-toggle">▾</span>
+        </div>
+        <div class="faq-a">
+          Тоглолт дуусмагц оноо автоматаар хадгалагдаж, <b style="color:var(--cyan)">Өндөр оноо</b> жагсаалтад нэмэгдэнэ.<br><br>
+          Зөв хариулт ихтэй, хугацаа богинотой тоглогч дээр эрэмбэлэгдэнэ. Найздаа давуулж чадах уу? 😄
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="faqToggle(this)">
+        <div class="faq-q">
+          <span class="faq-q-icon">🔐</span>
+          <span>Бүртгэлгүйгээр тоглох боломжтой юу?</span>
+          <span class="faq-toggle">▾</span>
+        </div>
+        <div class="faq-a">
+          Зарим тоглоомыг үзэх боломжтой ч <b style="color:var(--cyan)">бүтэн тоглохын тулд нэвтрэх шаардлагатай</b>.<br><br>
+          Google бүртгэлээрээ секундын дотор нэвтэрч тоглоомоо эхлүүлээрэй — үнэгүй бүртгэл!
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div class="landing-section-title">📬 Холбоо барих</div>
+    <div class="contact-card">
+      <div class="contact-left">
+        <div class="contact-email">bolorgames<span>@gmail.com</span></div>
+        <div class="contact-desc">
+          Асуулт, санал хүсэлт, техникийн тусламж хэрэгтэй бол бидэнтэй холбогдоно уу.
+        </div>
+        <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
+          <a href="https://www.facebook.com/bolorgames" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;gap:8px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;padding:8px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:.2s;"
+            onmouseover="this.style.borderColor='#1877f2';this.style.color='#fff'" 
+            onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.6)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877f2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+            Bolorgames
+          </a>
+          <a href="https://www.instagram.com/bolorgames" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;gap:8px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;padding:8px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:.2s;"
+            onmouseover="this.style.borderColor='#e1306c';this.style.color='#fff'" 
+            onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.6)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="url(#ig)"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Bolorgames
+          </a>
+          <a href="https://www.youtube.com/channel/UC7Tn3R6kn21iUADkypSHpqg" target="_blank" rel="noopener"
+            style="display:flex;align-items:center;gap:8px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;padding:8px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);transition:.2s;"
+            onmouseover="this.style.borderColor='#ff0000';this.style.color='#fff'" 
+            onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.6)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            Bolorgames
+          </a>
+        </div>
+      </div>
+      <a href="mailto:bolorgames@gmail.com" class="contact-btn">✉ ИМЭЙЛ ИЛГЭЭХ</a>
+    </div>
+
+  </div>
+
+  <div class="landing-footer">© Bolor Games · Game Platform · 2026</div>
+</div>
+
+<!-- ══ MUSIC QUIZ HOME ══ -->
+<div id="mqHomeScreen" class="screen">
+  <div class="logo-eyebrow">🎵 Music Quiz Platform</div>
+  <h2 class="logo-title">BOLOR<br>GAMES</h2>
+  <div class="logo-sub">Music Knowledge Championship</div>
+  <div class="search-wrap">
+    <input class="search-input" id="mqSearchInput" type="text" placeholder="Тоглолт хайх..." oninput="mqOnSearch(this.value)" autocomplete="off">
+    <span class="search-icon-lbl">🔍</span>
+    <div class="search-results" id="mqSearchRes"></div>
+  </div>
+  <div class="rounds-section">
+    <div class="rounds-title">— Хадгалсан тоглолтууд —</div>
+    <div class="rounds-grid" id="mqRoundsGrid"></div>
+  </div>
+  <div id="mqImportWrap" style="display:none;margin-top:16px;text-align:center;">
+    <label style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:2px;color:var(--cyan);cursor:pointer;padding:10px 20px;border:1px dashed rgba(0,245,255,.35);border-radius:40px;">
+      📥 JSON import<input type="file" accept=".json" style="display:none;" onchange="mqImportJSON(this)">
+    </label>
+  </div>
+</div>
+
+<!-- ══ MUSIC QUIZ GAME ══ -->
+<div id="mqGameScreen" class="screen">
+  <div class="wrapper">
+    <div class="game-header">
+      <button class="game-back" onclick="mqGoHome()">← Буцах</button>
+      <div class="game-round-name" id="mqRoundName"></div>
+      <div class="top-btns" id="mqAdminBtns" style="display:none;">
+        <button class="edit-btn" onclick="mqOpenEditor()">✏ Засах</button>
+        <button class="reset-btn" onclick="mqResetGame()">↺ Reset</button>
+      </div>
+    </div>
+    <div class="game-layout">
+      <div class="board-wrap"><div class="board" id="mqBoard"></div></div>
+      <div class="players-panel" id="mqPlayersPanel"></div>
+    </div>
+    <div class="gfooter">♪ товч дарж дуу тоглуулна · зөв хариулсан тоглогчид оноо өгнө</div>
+  </div>
+</div>
+
+<!-- ══ MOVIE QUIZ HOME ══ -->
+<div id="mvHomeScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#ffd700;">🎬 Movie Quiz Platform</div>
+  <h2 class="logo-title mv-gold">BOLOR<br>GAMES</h2>
+  <div class="logo-sub">Movie Knowledge Championship</div>
+  <div class="search-wrap">
+    <input class="search-input" id="mvSearchInput" type="text" placeholder="Тоглолт хайх..." oninput="mvOnSearch(this.value)" autocomplete="off">
+    <span class="search-icon-lbl">🔍</span>
+    <div class="search-results" id="mvSearchRes"></div>
+  </div>
+  <div class="rounds-section">
+    <div class="rounds-title" style="color:rgba(255,215,0,.6);">— Хадгалсан тоглолтууд —</div>
+    <div class="rounds-grid" id="mvRoundsGrid"></div>
+  </div>
+  <div id="mvImportWrap" style="display:none;margin-top:16px;text-align:center;">
+    <label style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:2px;color:#ffd700;cursor:pointer;padding:10px 20px;border:1px dashed rgba(255,215,0,.35);border-radius:40px;">
+      📥 JSON import<input type="file" accept=".json" style="display:none;" onchange="mvImportJSON(this)">
+    </label>
+  </div>
+</div>
+
+<!-- ══ QUANTUM QUIZ HOME ══ -->
+<div id="qqHomeScreen" class="screen">
+  <div style="text-align:center;margin-bottom:8px;font-size:48px;animation:atomSpin 8s linear infinite;filter:drop-shadow(0 0 20px var(--q-cyan))">⚛️</div>
+  <div class="qq-home-title">QUANTUM QUIZ</div>
+  <div class="qq-home-sub">Шинжлэх ухааны тоглоолтуудаа сонгоно уу</div>
+  <div class="qq search-wrap" style="max-width:560px;width:100%;">
+    <input class="search-input" id="qqSearchInput" type="text" placeholder="Тоглолт хайх..." oninput="qqOnSearch(this.value)" autocomplete="off">
+    <span class="search-icon-lbl">🔍</span>
+    <div class="search-results" id="qqSearchRes"></div>
+  </div>
+  <div class="rounds-section" style="max-width:960px;">
+    <div class="rounds-title qq" style="font-family:'Share Tech Mono',monospace;letter-spacing:5px;">— Тоглоомын тоглолтууд —</div>
+    <div class="rounds-grid qq" id="qqRoundsGrid"></div>
+  </div>
+  <div id="qqImportWrap" style="display:none;margin-top:16px;text-align:center;">
+    <label style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--q-muted);cursor:pointer;padding:8px 18px;border:1px solid rgba(255,213,79,.2);border-radius:3px;">
+      📥 JSON Import<input type="file" accept=".json" style="display:none;" onchange="qqImportJSON(this)">
+    </label>
+  </div>
+</div>
+<style>@keyframes atomSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>
+
+<!-- ══ QUANTUM QUIZ GAME ══ -->
+<div id="qqGameScreen" class="screen">
+  <div class="wrapper">
+    <div class="game-header">
+      <button class="game-back" onclick="qqGoHome()">← Буцах</button>
+      <div class="game-round-name" id="qqRoundName" style="color:var(--q-cyan);text-shadow:0 0 20px var(--q-cyan);font-family:'Exo 2',sans-serif;"></div>
+      <div class="top-btns">
+        <button class="reset-btn" onclick="qqResetGame()">↺ Дахин</button>
+        <button class="edit-btn" id="qqAdminEditBtn" onclick="qqOpenEditor()" style="display:none;">✎ Засах</button>
+      </div>
+    </div>
+    <div class="game-layout">
+      <div class="board-wrap"><div class="board" id="qqBoard"></div></div>
+      <div class="players-panel" id="qqPlayersPanel"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MEMORY CARDS HOME ══ -->
+<!-- ══ ADMIN DASHBOARD ══ -->
+<div id="adminDashScreen" class="screen">
+  <div class="logo-eyebrow" style="color:var(--cyan);">🔐 Admin Panel</div>
+  <h2 class="logo-title" style="font-size:clamp(28px,5.5vw,56px);">ХЭРЭГЛЭГЧИД</h2>
+  <div class="logo-sub">Бүртгэлтэй хэрэглэгчдийн жагсаалт болон эрхийн удирдлага</div>
+  <div style="max-width:1100px;margin:0 auto;padding:0 16px;">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap;">
+      <input id="adDashSearch" type="text" placeholder="Нэр, имэйл, утасны дугаараар хайх..." oninput="adRenderUsers()" style="flex:1;min-width:220px;font-family:'Share Tech Mono',monospace;font-size:13px;padding:11px 14px;border-radius:8px;border:1px solid rgba(0,245,255,.25);background:rgba(0,0,0,.3);color:#fff;">
+      <div id="adDashCount" style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap;">Ачааллаж байна...</div>
+      <button onclick="adLoadUsers()" style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1px;padding:10px 16px;border-radius:8px;border:1px solid rgba(0,245,255,.3);background:rgba(0,245,255,.08);color:var(--cyan);cursor:pointer;">↻ Шинэчлэх</button>
+      <button onclick="showMediaMigrate()" title="base64 зургийг Firebase Storage руу шилжүүлж Firestore-ийн зардлыг бууруулна" style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1px;padding:10px 16px;border-radius:8px;border:1px solid rgba(34,197,94,.4);background:rgba(34,197,94,.1);color:#86efac;cursor:pointer;">🖼 ЗУРАГ → STORAGE</button>
+      <button onclick="showAdminStats()" style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1px;padding:10px 16px;border-radius:8px;border:1px solid rgba(255,215,0,.45);background:rgba(255,215,0,.1);color:#ffd700;cursor:pointer;">📊 СТАТИСТИК</button>
+      <button onclick="showAdminKfix()" style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1px;padding:10px 16px;border-radius:8px;border:1px solid rgba(139,92,246,.4);background:rgba(139,92,246,.1);color:#c4b5fd;cursor:pointer;">🔧 K-type тест засах</button>
+    </div>
+    <div id="adDashTable" style="background:rgba(10,22,40,.5);border:1px solid rgba(0,245,255,.12);border-radius:12px;overflow:hidden;"></div>
+
+    <div style="margin-top:36px;">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+        <div style="font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:#ffb020;">⚠️ Имэйл баталгаажаагүй хэрэглэгчид</div>
+        <button onclick="adLoadUnverified()" style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:1px;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,176,32,.35);background:rgba(255,176,32,.08);color:#ffb020;cursor:pointer;">↻ Ачаалах</button>
+      </div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:12px;">Эдгээр хэрэглэгч баталгаажуулах имэйл аваагүй/спамд орсон байж магадгүй тул нэвтэрч чадахгүй байна. «✓ Баталгаажуулах» дарж шууд нэвтрэх боломжтой болгож болно.</div>
+      <div id="adUnverifiedTable" style="background:rgba(40,26,10,.4);border:1px solid rgba(255,176,32,.15);border-radius:12px;overflow:hidden;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ АДМИН: СТАТИСТИК (зөвхөн админд) ══ -->
+<div id="adminStatsScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#ffd700;">🔐 Зөвхөн админд</div>
+  <h2 class="logo-title" style="font-size:clamp(28px,5.5vw,56px);">СТАТИСТИК</h2>
+  <div class="logo-sub">Хэрэглэгчид, идэвх, хамгийн их үзэж буй тоглоом, мэдээ, тест</div>
+  <div class="st-wrap">
+    <button class="qr-back-btn" style="margin-bottom:14px;" onclick="showAdminDash()">← Админ самбар руу буцах</button>
+    <div id="stRoot"></div>
+  </div>
+</div>
+
+<!-- АДМИН: K-type (A-E хариулттай) тестийн хурдан засах хэрэгсэл -->
+<div id="adminKfixScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#c4b5fd;">🔧 Admin Tool</div>
+  <h2 class="logo-title" style="font-size:clamp(24px,4.5vw,44px);">K-TYPE ТЕСТ ЗАСАХ</h2>
+  <div class="logo-sub">Фолдер сонгоод, тухайн доторх бүх асуултын зөв хариултыг A/B/C/D/E товчоор шууд тохируулна.</div>
+  <div style="max-width:900px;margin:0 auto;padding:0 16px;">
+    <button class="qr-back-btn" style="margin-bottom:16px;" onclick="showAdminDash()">← Админ самбар руу буцах</button>
+    <select id="adKfixFolderSelect" onchange="adKfixLoadFolder()" style="width:100%;font-family:'Share Tech Mono',monospace;font-size:13px;padding:12px 14px;border-radius:10px;border:1px solid rgba(139,92,246,.3);background:rgba(0,0,0,.3);color:#fff;margin-bottom:10px;">
+      <option value="">— Фолдер сонгох —</option>
+    </select>
+    <div class="ad-kfix-legend">
+      🔑 <b>Стандарт key:</b> A = 1,2,3 зөв &nbsp;·&nbsp; B = 1,2,3,4 зөв &nbsp;·&nbsp; C = 2,4 зөв &nbsp;·&nbsp; D = зөвхөн 4 зөв &nbsp;·&nbsp; E = бүгд зөв
+    </div>
+    <div id="adKfixCount" style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:8px;"></div>
+    <label class="ad-kfix-filter-toggle">
+      <input type="checkbox" id="adKfixOnlySuspicious" checked onchange="adKfixRender()">
+      <span>⚠️ Зөвхөн олон зөв индекстэй (сэжигтэй) асуултыг харуулах</span>
+    </label>
+    <button class="ad-kfix-bulk-btn" onclick="adKfixBulkStandardizeOptions()">🔁 БҮХ сэжигтэй асуултын сонголтыг стандарт болгох (A=1,2,3 · B=1,2,3,4 · C=2,4 · D=4 · E=бүгд)</button>
+    <div id="adKfixList"></div>
+  </div>
+</div>
+
+<div id="mcHomeScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#ffd700;">🃏 Memory Cards Platform</div>
+  <h2 class="logo-title" style="font-size:clamp(32px,6.5vw,72px);background:linear-gradient(135deg,#ffd700 0%,#fff 40%,#ffb700 80%,#a07010 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">MEMORY<br>CARDS</h2>
+  <div class="logo-sub" style="color:#ffd700;">Хөзрийн дараалал санах тоглоом</div>
+  <div class="mc-setup-box">
+    <div class="mc-setup-title">— ШИНЭ ТОГЛОЛТ —</div>
+    <div class="mc-setup-field">
+      <div class="mc-setup-lbl">Тоглогчийн нэр</div>
+      <input class="mc-setup-inp" id="mcPlayerName" type="text" placeholder="Нэрээ оруулна уу..." maxlength="24">
+    </div>
+    <div class="mc-setup-field">
+      <div class="mc-setup-lbl">Хэдэн хөзөр ашиглах вэ?</div>
+      <div class="mc-count-grid" id="mcCountGrid"></div>
+      <div class="mc-custom-count-row">
+        <span class="mc-custom-count-lbl">эсвэл өөрөө оруулах:</span>
+        <input class="mc-custom-count-inp" id="mcCustomCount" type="number" min="2" max="52" placeholder="2-52" oninput="mcSetCustomCount(this.value)">
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <div class="mc-setup-lbl">Хэрхэн харуулах вэ?</div>
+      <div class="mc-reveal-grid" id="mcRevealGrid">
+        <button class="mc-reveal-btn active" data-mode="all" onclick="mcSetRevealMode('all')">🃏 Бүгдийг зэрэг</button>
+        <button class="mc-reveal-btn" data-mode="sequential" onclick="mcSetRevealMode('sequential')">⏱ 1-1-ээр (3 сек тутамд)</button>
+      </div>
+    </div>
+    <button class="mc-start-btn" onclick="mcStartGame()">▶ ТОГЛОЛТ ЭХЛЭХ</button>
+  </div>
+  <div class="mc-lb-section">
+    <div class="mc-setup-title">— ШИЛДЭГ ТОГЛОГЧИД —</div>
+    <div class="mc-lb-tabs" id="mcLbTabs"></div>
+    <div class="mc-lb-table" id="mcLbTable"></div>
+  </div>
+</div>
+
+<!-- ══ MEMORY CARDS GAME ══ -->
+<div id="mcGameScreen" class="screen">
+  <div class="wrapper">
+    <div class="game-header">
+      <button class="game-back" onclick="mcGoHome()">← Буцах</button>
+      <div class="game-round-name" style="color:#ffd700;text-shadow:0 0 20px #ffd700;" id="mcPlayerLabel"></div>
+      <div class="top-btns">
+        <div class="mc-timer" id="mcTimer">00:00.0</div>
+      </div>
+    </div>
+    <div class="mc-phase-banner" id="mcPhaseBanner">— ДАРААЛЛАА ЦЭЭЖИЛНЭ ҮҮ —</div>
+    <div class="mc-seq-countdown" id="mcSeqCountdown" style="display:none;"></div>
+    <div class="mc-board" id="mcBoard"></div>
+    <div class="mc-controls" id="mcControls">
+      <button class="mc-shuffle-btn" id="mcShuffleBtn" onclick="mcShuffle()">🔀 ХОЛИХ</button>
+      <button class="mc-memorized-btn" id="mcMemorizedBtn" onclick="mcMemorized()" style="display:none;">✓ ЦЭЭЖИЛСЭН</button>
+    </div>
+    <div class="mc-recall-area" id="mcRecallArea" style="display:none;">
+      <div class="mc-recall-lbl">Дараагийн хөзрийг сонгоно уу: <span id="mcRecallStep">1</span> / <span id="mcRecallTotal"></span></div>
+      <div class="mc-recall-deck" id="mcRecallDeck"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MEMORY CARDS RESULT ══ -->
+<div class="m-overlay" id="mcResultOverlay">
+  <div class="modal" style="border-color:#ffd700;">
+    <div class="m-head">
+      <div><div class="m-cat" style="color:#ffd700;">🏆 ТОГЛОЛТ ДУУСЛАА</div></div>
+      <button class="close-btn" onclick="mcCloseResult()">✕</button>
+    </div>
+    <div class="mc-result-stats" id="mcResultStats"></div>
+    <div class="m-actions" style="flex-wrap:wrap;gap:8px;">
+      <button class="btn-back" onclick="mcCloseResult()">← Буцах</button>
+      <button onclick="mcShareResult()" style="font-family:Orbitron,monospace;font-size:10px;padding:10px 16px;border-radius:10px;border:2px solid #ffd700;background:rgba(255,215,0,.08);color:#ffd700;cursor:pointer;letter-spacing:1px;">📤 Хуваалцах</button>
+      <button class="btn-done" onclick="mcPlayAgain()">↺ Дахин тоглох</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FLAG QUIZ HOME ══ -->
+<div id="flHomeScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#00e68c;">🚩 Flag Quiz Platform</div>
+  <h2 class="logo-title" style="font-size:clamp(32px,6.5vw,72px);background:linear-gradient(135deg,#00e68c 0%,#fff 40%,#00b86b 80%,#0a5c38 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">FLAG<br>QUIZ</h2>
+  <div class="logo-sub" style="color:#00e68c;">Дэлхийн 195 орны туг таах тоглоом</div>
+  <div class="mc-setup-box">
+    <div class="mc-setup-title">— ШИНЭ ТОГЛОЛТ —</div>
+    <div class="mc-setup-field">
+      <div class="mc-setup-lbl">Тоглогчийн нэр</div>
+      <input class="mc-setup-inp" id="flPlayerName" type="text" placeholder="Нэрээ оруулна уу..." maxlength="24">
+    </div>
+    <div class="mc-setup-field">
+      <div class="mc-setup-lbl">Горим сонгох</div>
+      <div class="mc-reveal-grid" id="flModeGrid">
+        <button class="mc-reveal-btn active" data-mode="count" onclick="flSetMode('count')">🔢 Тоогоор (1-200)</button>
+        <button class="mc-reveal-btn" data-mode="time" onclick="flSetMode('time')">⏱ Хугацаагаар (1-300 сек)</button>
+      </div>
+    </div>
+    <div class="mc-setup-field" id="flCountField">
+      <div class="mc-setup-lbl">Хэдэн туг таах вэ?</div>
+      <div class="mc-count-grid" id="flCountGrid"></div>
+      <input class="mc-setup-inp" id="flCountCustom" type="number" min="1" max="195" placeholder="Эсвэл өөрөө тоо бичих (1-195)..." oninput="flSetCustomCount(this.value)" style="margin-top:8px;">
+    </div>
+    <div class="mc-setup-field" id="flTimeField" style="display:none;">
+      <div class="mc-setup-lbl">Хэдэн секунд тоглох вэ?</div>
+      <div class="mc-count-grid" id="flTimeGrid"></div>
+      <input class="mc-setup-inp" id="flTimeCustom" type="number" min="1" max="300" placeholder="Эсвэл өөрөө секунд бичих (1-300)..." oninput="flSetCustomTime(this.value)" style="margin-top:8px;">
+    </div>
+    <button class="mc-start-btn" style="background:linear-gradient(135deg,#00e68c,#00b86b);" onclick="flStartGame()">▶ ТОГЛОЛТ ЭХЛЭХ</button>
+  </div>
+  <div class="mc-lb-box">
+    <div class="mc-lb-title" style="display:flex;align-items:center;justify-content:center;">
+      🏆 ТОГЛОЛТЫН ЖАГСААЛТ
+      <span id="mcDelAllBtn" style="display:none;"><button class="lb-del-all-btn" onclick="delAllScores('memory_scores',mcRenderLeaderboard)">🗑 Бүгдийг устгах</button></span>
+    </div>
+    <div class="mc-lb-tabs" id="flLbTabs">
+      <button class="mc-lb-tab active" data-mode="count" onclick="flSwitchLbMode('count')">Тоогоор</button>
+      <button class="mc-lb-tab" data-mode="time" onclick="flSwitchLbMode('time')">Хугацаагаар</button>
+    </div>
+    <div id="flLbTable"></div>
+  </div>
+</div>
+
+<!-- ══ FLAG QUIZ GAME ══ -->
+<div id="flGameScreen" class="screen">
+  <div class="wrapper">
+    <div class="game-header">
+      <button class="game-back" onclick="flGoHome()">← Буцах</button>
+      <div class="game-round-name" style="color:#00e68c;text-shadow:0 0 20px #00e68c;" id="flPlayerLabel"></div>
+      <div class="top-btns">
+        <div class="mc-timer" id="flTimer" style="color:#00e68c;">00:00.0</div>
+      </div>
+    </div>
+    <div class="mc-phase-banner" id="flPhaseBanner" style="color:#00e68c;">— ТУГИЙГ ТААНА УУ —</div>
+    <div class="fl-flag-wrap">
+      <img id="flFlagImg" class="fl-flag-img" src="" alt="flag">
+    </div>
+    <div class="fl-feedback" id="flFeedback"></div>
+    <div class="fl-progress" id="flProgress"></div>
+    <div class="fl-search-wrap">
+      <input id="flSearchInput" class="fl-search-inp" type="text" placeholder="🔍 Улсын нэрээр хайх..." oninput="flFilterCountries(this.value)" onkeydown="if(event.key==='Enter')flSearchEnter()" autocomplete="off">
+    </div>
+    <div class="fl-country-grid" id="flCountryGrid"></div>
+  </div>
+</div>
+
+<!-- ══ FLAG QUIZ RESULT ══ -->
+<div class="m-overlay" id="flResultOverlay">
+  <div class="modal" style="border-color:#00e68c;">
+    <div class="m-head">
+      <div><div class="m-cat" style="color:#00e68c;">🏆 ТОГЛОЛТ ДУУСЛАА</div></div>
+      <button class="close-btn" onclick="flCloseResult()">✕</button>
+    </div>
+    <div class="mc-result-stats" id="flResultStats"></div>
+    <div class="m-actions" style="flex-wrap:wrap;gap:8px;">
+      <button class="btn-back" onclick="flCloseResult()">← Буцах</button>
+      <button onclick="flShareResult()" style="font-family:Orbitron,monospace;font-size:10px;padding:10px 16px;border-radius:10px;border:2px solid #00e68c;background:rgba(0,230,140,.08);color:#00e68c;cursor:pointer;letter-spacing:1px;">📤 Хуваалцах</button>
+      <button class="btn-done" onclick="flPlayAgain()">↺ Дахин тоглох</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOGO QUIZ HOME ══ -->
+<div id="lqHomeScreen" class="screen">
+  <div class="logo-eyebrow">🏷️ Logo Quiz Platform</div>
+  <h2 class="logo-title" style="font-size:clamp(32px,6.5vw,72px);background:linear-gradient(135deg,#ff9500 0%,#fff 40%,#ff6b00 80%,#ff3b00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">LOGO<br>QUIZ</h2>
+  <div class="mc-setup-box">
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Нэрээ оруулна уу</label>
+      <input class="mc-setup-inp" id="lqPlayerName" type="text" placeholder="Нэрээ оруулна уу..." maxlength="24">
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Логоны төрөл</label>
+      <div class="mc-reveal-grid" id="lqCatGrid">
+        <button class="mc-reveal-btn active" data-cat="all" onclick="lqSetCat('all')">🌍 Бүгд</button>
+        <button class="mc-reveal-btn" data-cat="mn" onclick="lqSetCat('mn')">🇲🇳 Монгол</button>
+        <button class="mc-reveal-btn" data-cat="intl" onclick="lqSetCat('intl')">🌐 Гадаад</button>
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Түвшин</label>
+      <div class="mc-reveal-grid" id="lqDiffGrid">
+        <button class="mc-reveal-btn active" data-diff="easy" onclick="lqSetDiff('easy')">🟢 Easy</button>
+        <button class="mc-reveal-btn" data-diff="medium" onclick="lqSetDiff('medium')">🟡 Medium</button>
+        <button class="mc-reveal-btn" data-diff="hard" onclick="lqSetDiff('hard')">🔴 Hard</button>
+        <button class="mc-reveal-btn" data-diff="expert" onclick="lqSetDiff('expert')">⚫ Expert</button>
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Тоглолтын горим</label>
+      <div class="mc-reveal-grid" id="lqModeGrid">
+        <button class="mc-reveal-btn active" data-mode="count" onclick="lqSetMode('count')">🔢 Тоогоор</button>
+        <button class="mc-reveal-btn" data-mode="time" onclick="lqSetMode('time')">⏱ Хугацаагаар</button>
+      </div>
+    </div>
+    <div class="mc-setup-field" id="lqCountField">
+      <label class="mc-setup-label">Лого тоо</label>
+      <div class="mc-count-grid" id="lqCountGrid"></div>
+      <input class="mc-setup-inp" id="lqCountCustom" type="number" min="1" max="100" placeholder="Өөрөө тоо бичих..." oninput="lqSetCustomCount(this.value)" style="margin-top:8px;">
+    </div>
+    <div class="mc-setup-field" id="lqTimeField" style="display:none;">
+      <label class="mc-setup-label">Хугацаа (секунд)</label>
+      <div class="mc-count-grid" id="lqTimeGrid"></div>
+      <input class="mc-setup-inp" id="lqTimeCustom" type="number" min="1" max="300" placeholder="Өөрөө секунд бичих..." oninput="lqSetCustomTime(this.value)" style="margin-top:8px;">
+    </div>
+    <button class="mc-start-btn" style="background:linear-gradient(135deg,#ff9500,#ff6b00);" onclick="lqStartGame()">▶ ТОГЛОЛТ ЭХЛЭХ</button>
+  </div>
+  <div class="mc-lb-wrap">
+    <div class="mc-lb-title" style="color:#ff9500;display:flex;align-items:center;justify-content:center;">
+      🏆 Өндөр оноо
+      <span id="flDelAllBtn" style="display:none;"><button class="lb-del-all-btn" onclick="delAllScores('flag_scores',flRenderLeaderboard)">🗑 Бүгдийг устгах</button></span>
+    </div>
+    <div style="text-align:center;margin-bottom:8px;" id="lqDelAllWrap">
+      <span id="lqDelAllBtn" style="display:none;"><button class="lb-del-all-btn" onclick="delAllScores('logo_scores',lqLoadScores)">🗑 Бүгдийг устгах</button></span>
+    </div>
+    <div class="mc-lb-tabs" id="lqLbTabs">
+      <button class="mc-lb-tab active" data-mode="count" onclick="lqSwitchLbMode('count')">Тоогоор</button>
+      <button class="mc-lb-tab" data-mode="time" onclick="lqSwitchLbMode('time')">Хугацаагаар</button>
+    </div>
+    <div id="lqLbTable"></div>
+  </div>
+</div>
+
+<!-- ══ LOGO ADMIN SCREEN ══ -->
+<div id="logoAdminScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#ff9500;">🔐 Admin Panel</div>
+  <h2 class="logo-title" style="font-size:clamp(24px,4vw,48px);background:linear-gradient(135deg,#ff9500,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ЛОГО УДИРДАХ</h2>
+
+  <!-- Upload form -->
+  <div class="mc-setup-box" style="border-color:rgba(255,149,0,.4);max-width:560px;">
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Логоны нэр</label>
+      <input class="mc-setup-inp" id="laName" type="text" placeholder="Жишээ: Apple, Samsung...">
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Түвшин</label>
+      <div class="mc-reveal-grid" id="laDiffGrid">
+        <button class="mc-reveal-btn active" data-diff="easy" onclick="laSetDiff('easy')">🟢 Easy</button>
+        <button class="mc-reveal-btn" data-diff="medium" onclick="laSetDiff('medium')">🟡 Medium</button>
+        <button class="mc-reveal-btn" data-diff="hard" onclick="laSetDiff('hard')">🔴 Hard</button>
+        <button class="mc-reveal-btn" data-diff="expert" onclick="laSetDiff('expert')">⚫ Expert</button>
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Төрөл</label>
+      <div class="mc-reveal-grid" id="laCatGrid">
+        <button class="mc-reveal-btn active" data-cat="intl" onclick="laSetCat('intl')">🌐 Гадаад</button>
+        <button class="mc-reveal-btn" data-cat="mn" onclick="laSetCat('mn')">🇲🇳 Монгол</button>
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Лого зураг</label>
+      <input id="laFile" type="file" accept="image/*,image/svg+xml" style="display:none;" onchange="laPreview(this)">
+      <div id="laDropZone" onclick="document.getElementById('laFile').click()" style="border:2px dashed rgba(255,149,0,.4);border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:.2s;background:rgba(255,149,0,.04);" onmouseover="this.style.borderColor='#ff9500'" onmouseout="this.style.borderColor='rgba(255,149,0,.4)'">
+        <div id="laPreviewWrap" style="display:none;margin-bottom:12px;"><img id="laPreviewImg" style="max-height:120px;max-width:100%;border-radius:8px;background:#fff;padding:8px;"></div>
+        <div id="laDropText" style="color:rgba(255,149,0,.7);font-family:Orbitron,monospace;font-size:12px;letter-spacing:1px;">📁 Зураг сонгох эсвэл чирж оруулах<br><span style="font-size:10px;opacity:.6;">PNG, JPG, SVG, WebP</span></div>
+      </div>
+    </div>
+    <button class="mc-start-btn" style="background:linear-gradient(135deg,#ff9500,#ff6b00);" onclick="laUpload()">
+      <span id="laUploadText">⬆ ЛОГО НЭМЭХ</span>
+    </button>
+    <div id="laMsg" style="margin-top:12px;text-align:center;font-family:Share Tech Mono,monospace;font-size:13px;"></div>
+  </div>
+
+  <!-- Logo list -->
+  <div style="max-width:900px;width:100%;margin:32px auto 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+      <div class="mc-lb-title" style="color:#ff9500;">🗂️ Нийт логонууд</div>
+      <div style="display:flex;gap:8px;">
+        <button onclick="laLoadLogos()" style="font-family:Orbitron,monospace;font-size:10px;padding:8px 14px;border-radius:8px;border:1px solid rgba(255,149,0,.3);background:rgba(255,149,0,.08);color:#ff9500;cursor:pointer;">↻ Шинэчлэх</button>
+        <input id="laSearch" type="text" placeholder="Хайх..." oninput="laRenderList()" style="font-family:Share Tech Mono,monospace;font-size:12px;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,149,0,.25);background:rgba(0,0,0,.3);color:#fff;width:160px;">
+      </div>
+    </div>
+    <div id="laLogoGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;"></div>
+    <div id="laEmpty" style="display:none;text-align:center;color:rgba(255,255,255,.4);font-family:Share Tech Mono,monospace;font-size:13px;padding:40px;">Лого байхгүй байна</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ STARQUIZ ══════════════════════ -->
+
+<!-- SQ ADMIN: Од удирдах -->
+<div id="starAdminScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#facc15;">🔐 Admin Panel</div>
+  <h2 class="logo-title" style="font-size:clamp(24px,4vw,48px);background:linear-gradient(135deg,#facc15,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ОД УДИРДАХ</h2>
+
+  <div class="mc-setup-box" style="border-color:rgba(250,204,21,.4);max-width:560px;">
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Хүний нэр</label>
+      <input class="mc-setup-inp" id="saName" type="text" placeholder="Жишээ: Lionel Messi...">
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Ангилал (өөрөө бичих эсвэл байгаагаас сонгох)</label>
+      <input class="mc-setup-inp" id="saCat" list="saCatList" type="text" placeholder="Жишээ: Хөлбөмбөгчид, Сагсчид, Жүжигчид...">
+      <datalist id="saCatList"></datalist>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Санамж / мэдээлэл (нэрийг нь дурдалгүйгээр — жишээ нь "1987 онд төрсөн, Португал улсынх, 5 удаа Хамгийн шилдэг тоглогч болсон")</label>
+      <textarea class="mc-setup-inp" id="saHint" rows="2" placeholder="Нэрийг нь дурдахгүйгээр богинохон тодорхойлолт бичнэ үү (заавал биш)..." style="resize:vertical;"></textarea>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Зураг</label>
+      <input id="saFile" type="file" accept="image/*" style="display:none;" onchange="saPreview(this)">
+      <div id="saDropZone" onclick="document.getElementById('saFile').click()" style="border:2px dashed rgba(250,204,21,.4);border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:.2s;background:rgba(250,204,21,.04);" onmouseover="this.style.borderColor='#facc15'" onmouseout="this.style.borderColor='rgba(250,204,21,.4)'">
+        <div id="saPreviewWrap" style="display:none;margin-bottom:12px;"><img id="saPreviewImg" style="max-height:120px;max-width:100%;border-radius:8px;"></div>
+        <div id="saDropText" style="color:rgba(250,204,21,.7);font-family:Orbitron,monospace;font-size:12px;letter-spacing:1px;">📁 Зураг сонгох эсвэл чирж оруулах<br><span style="font-size:10px;opacity:.6;">PNG, JPG, WebP</span></div>
+      </div>
+    </div>
+    <button class="mc-start-btn" style="background:linear-gradient(135deg,#facc15,#f59e0b);" onclick="saUpload()">
+      <span id="saUploadText">⬆ ХҮН НЭМЭХ</span>
+    </button>
+    <div id="saMsg" style="margin-top:12px;text-align:center;font-family:Share Tech Mono,monospace;font-size:13px;"></div>
+  </div>
+
+  <div style="max-width:900px;width:100%;margin:32px auto 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+      <div class="mc-lb-title" style="color:#facc15;">🗂️ Нийт хүмүүс</div>
+      <div style="display:flex;gap:8px;">
+        <button onclick="saLoadItems()" style="font-family:Orbitron,monospace;font-size:10px;padding:8px 14px;border-radius:8px;border:1px solid rgba(250,204,21,.3);background:rgba(250,204,21,.08);color:#facc15;cursor:pointer;">↻ Шинэчлэх</button>
+        <input id="saSearch" type="text" placeholder="Хайх..." oninput="saRenderList()" style="font-family:Share Tech Mono,monospace;font-size:12px;padding:8px 12px;border-radius:8px;border:1px solid rgba(250,204,21,.25);background:rgba(0,0,0,.3);color:#fff;width:160px;">
+      </div>
+    </div>
+    <div id="saItemGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;"></div>
+    <div id="saEmpty" style="display:none;text-align:center;color:rgba(255,255,255,.4);font-family:Share Tech Mono,monospace;font-size:13px;padding:40px;">Хүн байхгүй байна</div>
+  </div>
+</div>
+
+<!-- SQ HOME -->
+<div id="sqHomeScreen" class="screen">
+  <div class="sq-float-bg" id="sqFloatBg"></div>
+  <div class="logo-eyebrow" style="color:#facc15;">⭐ Celebrity Recognition Arena</div>
+  <h2 class="logo-title sq-gold">STAR<br>QUIZ</h2>
+  <div class="logo-sub">Зургаар нь тан, нэрийг нь тааж яв! Бичих эсвэл үсэг дээр дарах хоёулаа зэрэг ажиллана.</div>
+  <div class="sq-setup-box">
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Ангилал</label>
+      <div class="sq-cat-grid" id="sqCatGrid"></div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Хэдэн хүн? (өөрөө тоогоо бичиж болно)</label>
+      <input class="mc-setup-inp" id="sqCountInp" type="number" min="1" max="50" value="10" oninput="sqSetCount(this.value)">
+    </div>
+    <div class="sq-hero-btns">
+      <button class="qr-solo-cta" style="flex:1;" onclick="sqStartSolo()">🎮 Ганцаараа</button>
+      <button class="qr-host-cta" style="flex:1;" onclick="sqHostStart()">▶ Хост эхлүүлэх</button>
+    </div>
+    <button class="qr-btn-join-big sq-join-btn" onclick="showSQJoin()">🎮 Кодоор нэгдэх</button>
+  </div>
+  <div class="sq-lb-wrap">
+    <div class="mc-lb-title" style="color:#facc15;">🏆 Ганцаарчилсан лидерборд</div>
+    <div id="sqLbTable"></div>
+  </div>
+</div>
+
+<!-- SQ HOST LOBBY -->
+<div id="sqHostLobbyScreen" class="screen">
+  <div class="qr-lobby-wrap">
+    <div class="qr-lobby-quizname" id="sqLobbyInfo"></div>
+    <div class="qr-pin-label">ТОГЛОГЧИД bolorgames.com/?sjoin ХАЯГААР ОРЖ ДООРХ КОДЫГ ОРУУЛНА</div>
+    <div class="qr-pin-box sq" id="sqPinBox">------</div>
+    <img class="qr-qrimg sq" id="sqQrImg" alt="QR код">
+    <div class="qr-players-count sq"><span id="sqPlayerCount">0</span> тоглогч холбогдсон</div>
+    <div class="qr-players-list" id="sqLobbyPlayers"></div>
+    <button class="qr-start-btn sq" id="sqStartBtn" onclick="sqHostBeginGame()" disabled>Тоглогч хүлээж байна…</button>
+    <button class="qr-cancel-btn" onclick="sqHostCancelSession()">Цуцлах</button>
+  </div>
+</div>
+
+<!-- SQ HOST GAME -->
+<div id="sqHostGameScreen" class="screen">
+  <div class="qr-host-wrap">
+    <div class="qr-host-top">
+      <span id="sqHostQNum">Хүн 1</span>
+      <span id="sqHostAnsCount">0 хариулсан</span>
+    </div>
+    <div class="sq-host-photo-wrap">
+      <img id="sqHostPhoto" class="sq-host-photo" alt="?">
+      <div class="sq-host-timer" id="sqHostTimer">0.0с</div>
+    </div>
+    <div class="sq-hint-box" id="sqHostHint"></div>
+    <div class="qr-host-actions" id="sqHostActions"></div>
+    <div class="qr-host-leaderboard" id="sqHostLeaderboard" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- SQ SOLO -->
+<div id="sqSoloScreen" class="screen">
+  <div class="qr-solo-wrap">
+    <div class="qr-solo-top">
+      <button class="qr-back-btn" onclick="sqSoloExit()">← Гарах</button>
+      <span id="sqSoloQNum">Хүн 1/10</span>
+      <span id="sqSoloScore">0 оноо</span>
+      <span id="sqSoloTimer">0.0с</span>
+    </div>
+    <div class="sq-host-photo-wrap sq-solo-photo-wrap">
+      <img id="sqSoloPhoto" class="sq-host-photo" alt="?">
+    </div>
+    <div class="sq-answer-area" id="sqSoloAnswerArea"></div>
+    <div class="qr-solo-feedback" id="sqSoloFeedback" style="display:none;"></div>
+    <div class="qr-solo-final" id="sqSoloFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- SQ JOIN -->
+<div id="sqJoinScreen" class="screen">
+  <div class="qr-join-wrap">
+    <div class="logo-eyebrow" style="color:#facc15;">⭐ StarQuiz</div>
+    <h2 class="logo-title sq-gold" style="font-size:38px;">НЭГДЭХ</h2>
+    <input class="qr-code-inp sq" id="sqJoinCodeInp" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="off">
+    <input class="qr-name-inp sq" id="sqJoinNameInp" type="text" placeholder="Таны нэр..." maxlength="20" autocomplete="off">
+    <button class="qr-join-go-btn sq" id="sqJoinGoBtn" onclick="sqDoJoin()">Нэгдэх →</button>
+    <div class="qr-join-err" id="sqJoinErr"></div>
+  </div>
+</div>
+
+<!-- SQ PLAY (тоглогчийн утас) -->
+<div id="sqPlayScreen" class="screen">
+  <div class="qr-play-wrap">
+    <div class="qr-play-waiting" id="sqPlayWaiting">
+      <div class="qr-play-pulse sq">⭐</div>
+      <div class="qr-play-wait-txt">Хостыг эхлүүлэхийг хүлээж байна…</div>
+      <div class="qr-play-name" id="sqPlayMyName"></div>
+    </div>
+    <div class="sq-play-question" id="sqPlayQuestion" style="display:none;">
+      <div class="sq-play-timer" id="sqPlayTimer">0.0с</div>
+      <div class="sq-answer-area" id="sqPlayAnswerArea"></div>
+    </div>
+    <div class="qr-play-submitted" id="sqPlaySubmitted" style="display:none;">
+      <div class="qr-play-pulse sq">✓</div>
+      <div class="qr-play-wait-txt" id="sqSubmitTxt">Хариулт илгээгдлээ! Хүлээнэ үү…</div>
+      <button class="qr-stuck-btn" id="sqStuckBtn" style="display:none;">⟳ Дахин илгээх</button>
+    </div>
+    <div class="qr-play-reveal sq" id="sqPlayReveal" style="display:none;"></div>
+    <div class="qr-play-final sq" id="sqPlayFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════ F1 READY ══════════════════════ -->
+
+<!-- F1 HOME -->
+<div id="f1HomeScreen" class="screen">
+  <div class="f1-float-bg" id="f1FloatBg"></div>
+  <div class="logo-eyebrow" style="color:#ff1e1e;">🏁 Reaction & Precision</div>
+  <h2 class="logo-title f1-red">F1<br>READY</h2>
+  <div class="logo-sub">Улаанаас ногоон гэрэлд шилжихэд цаг эхэлнэ — сонгосон цагаа хамгийн нарийн тааруул!</div>
+  <div class="sq-setup-box f1-setup-box">
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Таны нэр</label>
+      <input class="mc-setup-inp" id="f1NameInp" type="text" placeholder="Нэрээ бичнэ үү..." maxlength="20">
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Горим</label>
+      <div class="mc-reveal-grid">
+        <button class="mc-reveal-btn active" data-f1mode="visible" onclick="f1SetMode('visible')">⏱ Цаг харагдана</button>
+        <button class="mc-reveal-btn" data-f1mode="hidden" onclick="f1SetMode('hidden')">🎯 Мэдрэмжээр (цаггүй)</button>
+        <button class="mc-reveal-btn" data-f1mode="gap" onclick="f1SetMode('gap')">🏁 Эхлэл→Төгсгөл таах</button>
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Хэдэн раунд? (өөрөө тоогоо бичиж болно)</label>
+      <input class="mc-setup-inp" id="f1CountInp" type="number" min="1" max="20" value="3" oninput="f1SetCount(this.value)">
+    </div>
+    <div class="sq-hero-btns">
+      <button class="qr-solo-cta" style="flex:1;" onclick="f1StartSolo()">🎮 Ганцаараа</button>
+      <button class="qr-host-cta" style="flex:1;" onclick="f1HostStart()">▶ Хост эхлүүлэх</button>
+    </div>
+    <button class="qr-btn-join-big f1-join-btn" onclick="showF1Join()">🎮 Кодоор нэгдэх</button>
+  </div>
+  <div class="sq-lb-wrap">
+    <div class="mc-lb-title" style="color:#ff1e1e;">🏆 Ганцаарчилсан лидерборд (хамгийн нарийн тааруулсан)</div>
+    <div id="f1LbTable"></div>
+  </div>
+</div>
+
+<!-- F1 HOST LOBBY -->
+<div id="f1HostLobbyScreen" class="screen">
+  <div class="qr-lobby-wrap">
+    <div class="qr-lobby-quizname" id="f1LobbyInfo"></div>
+    <div class="qr-pin-label">ТОГЛОГЧИД bolorgames.com/?fjoin ХАЯГААР ОРЖ ДООРХ КОДЫГ ОРУУЛНА</div>
+    <div class="qr-pin-box f1" id="f1PinBox">------</div>
+    <img class="qr-qrimg f1" id="f1QrImg" alt="QR код">
+    <div class="qr-players-count f1"><span id="f1PlayerCount">0</span> тоглогч холбогдсон</div>
+    <div class="qr-players-list" id="f1LobbyPlayers"></div>
+    <button class="qr-start-btn f1" id="f1StartBtn" onclick="f1HostBeginGame()" disabled>Тоглогч хүлээж байна…</button>
+    <button class="qr-cancel-btn" onclick="f1HostCancelSession()">Цуцлах</button>
+  </div>
+</div>
+
+<!-- F1 HOST GAME -->
+<div id="f1HostGameScreen" class="screen">
+  <div class="qr-host-wrap">
+    <div class="qr-host-top">
+      <span id="f1HostQNum">Раунд 1</span>
+      <span id="f1HostAnsCount">0 хариулсан</span>
+    </div>
+    <div class="f1-stage" id="f1HostStage">
+      <div class="f1-lights" id="f1HostLights">
+        <div class="f1-light" data-i="0"></div>
+        <div class="f1-light" data-i="1"></div>
+        <div class="f1-light" data-i="2"></div>
+      </div>
+      <div class="f1-status-txt" id="f1HostStatusTxt">Тоглогчид цагаа сонгож байна…</div>
+      <div class="f1-timer" id="f1HostTimer" style="display:none;">0.00с</div>
+    </div>
+    <div class="qr-host-actions" id="f1HostActions"></div>
+    <div class="qr-host-leaderboard" id="f1HostLeaderboard" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- F1 SOLO -->
+<div id="f1SoloScreen" class="screen">
+  <div class="qr-solo-wrap">
+    <div class="qr-solo-top">
+      <button class="qr-back-btn" onclick="f1SoloExit()">← Гарах</button>
+      <span id="f1SoloQNum">Раунд 1/3</span>
+      <span></span>
+    </div>
+    <div class="f1-stage" id="f1SoloStage">
+      <div class="f1-target-entry" id="f1SoloTargetEntry">
+        <div class="f1-target-label">Хэдэн секундэд зогсоохоо сонго (жишээ: 5.55)</div>
+        <input class="f1-target-inp" id="f1SoloTargetInp" type="text" inputmode="decimal" placeholder="5.55" autocomplete="off">
+        <button class="sq-type-submit-btn f1-btn" id="f1SoloTargetBtn">▶ Бэлэн</button>
+      </div>
+      <div class="f1-gap-label" id="f1SoloStatusTxt"></div>
+      <div class="f1-lights" id="f1SoloLights" style="display:none;">
+        <div class="f1-light" data-i="0"></div>
+        <div class="f1-light" data-i="1"></div>
+        <div class="f1-light" data-i="2"></div>
+      </div>
+      <div class="f1-timer" id="f1SoloTimer" style="display:none;">0.00с</div>
+      <button class="f1-stop-btn" id="f1SoloStopBtn" style="display:none;">ЗОГСОО</button>
+    </div>
+    <div class="qr-solo-feedback" id="f1SoloFeedback" style="display:none;"></div>
+    <div class="qr-solo-final" id="f1SoloFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- F1 JOIN -->
+<div id="f1JoinScreen" class="screen">
+  <div class="qr-join-wrap">
+    <div class="logo-eyebrow" style="color:#ff1e1e;">🏁 F1 Ready</div>
+    <h2 class="logo-title f1-red" style="font-size:38px;">НЭГДЭХ</h2>
+    <input class="qr-code-inp f1" id="f1JoinCodeInp" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="off">
+    <input class="qr-name-inp f1" id="f1JoinNameInp" type="text" placeholder="Таны нэр..." maxlength="20" autocomplete="off">
+    <button class="qr-join-go-btn f1" id="f1JoinGoBtn" onclick="f1DoJoin()">Нэгдэх →</button>
+    <div class="qr-join-err" id="f1JoinErr"></div>
+  </div>
+</div>
+
+<!-- F1 PLAY (тоглогчийн утас) -->
+<div id="f1PlayScreen" class="screen">
+  <div class="qr-play-wrap">
+    <div class="qr-play-waiting" id="f1PlayWaiting">
+      <div class="qr-play-pulse f1">🏁</div>
+      <div class="qr-play-wait-txt">Хостыг эхлүүлэхийг хүлээж байна…</div>
+      <div class="qr-play-name" id="f1PlayMyName"></div>
+    </div>
+    <div class="f1-stage" id="f1PlayStage" style="display:none;">
+      <div class="f1-target-entry" id="f1PlayTargetEntry">
+        <div class="f1-target-label">Хэдэн секундэд зогсоохоо сонго (жишээ: 5.55)</div>
+        <input class="f1-target-inp" id="f1PlayTargetInp" type="text" inputmode="decimal" placeholder="5.55" autocomplete="off">
+        <button class="sq-type-submit-btn f1-btn" id="f1PlayTargetBtn">▶ Бэлэн</button>
+        <div class="f1-target-waitmsg" id="f1PlayTargetWaitMsg" style="display:none;">✓ Цагаа сонголоо. Бусад тоглогчийг хүлээж байна…</div>
+      </div>
+      <div class="f1-gap-label" id="f1PlayStatusTxt"></div>
+      <div class="f1-lights" id="f1PlayLights" style="display:none;">
+        <div class="f1-light" data-i="0"></div>
+        <div class="f1-light" data-i="1"></div>
+        <div class="f1-light" data-i="2"></div>
+      </div>
+      <div class="f1-timer" id="f1PlayTimer" style="display:none;">0.00с</div>
+      <button class="f1-stop-btn" id="f1PlayStopBtn" style="display:none;">ЗОГСОО</button>
+    </div>
+    <div class="qr-play-submitted" id="f1PlaySubmitted" style="display:none;">
+      <div class="qr-play-pulse f1">✓</div>
+      <div class="qr-play-wait-txt" id="f1SubmitTxt">Хариулт илгээгдлээ! Хүлээнэ үү…</div>
+      <button class="qr-stuck-btn" id="f1StuckBtn" style="display:none;">⟳ Дахин илгээх</button>
+    </div>
+    <div class="qr-play-reveal f1" id="f1PlayReveal" style="display:none;"></div>
+    <div class="qr-play-final f1" id="f1PlayFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════ МАТЕМАТИК — ОЛИМПИАД (одоогоор зөвхөн админд) ══════════════════════ -->
+
+<!-- MO HOME -->
+<div id="moHomeScreen" class="screen mo-editorial">
+  <!-- Толгой + онцлох мэдээ (LinguaRush маяг) -->
+  <div id="moTop"></div>
+  <div id="moCrumb" class="qr-fp-breadcrumb" style="display:none;"></div>
+  <div class="lr-paper"><div class="lr-paper-in">
+  <div id="moPay"></div>
+  <div id="moRoot"></div>
+  <div id="moSectionWrap" class="mo-wrap" style="display:none;">
+    <!-- Хэсэг бүрийн толгой: зураг + ишлэл (админ засна) -->
+    <div class="mh-hero" id="mhHero"></div>
+
+    <div class="mo-sections" id="moSections" style="display:none;"></div>
+    <div id="moFolders"></div>
+
+    <!-- Админ: бодлого нэмэх -->
+    <div class="mo-admin" id="moAdminPanel" style="display:none;">
+      <div class="mo-admin-title" id="moAdminTitle">Бодлого нэмэх</div>
+      <label class="mo-drop" id="moDrop">
+        <input type="file" id="moFileInp" accept=".html,.htm,text/html" multiple onchange="moPickFiles(this.files)">
+        <span class="mo-drop-big">HTML файлаа энд чирж оруулах эсвэл дарж сонгоно</span>
+        <span class="mo-drop-small" id="moDropSmall">Нэг дор олон файл болно. Гарчгийг файлын &lt;title&gt;-оос, ангийг нэрнээс нь автоматаар танина.</span>
+      </label>
+      <div class="mo-admin-row" id="moDefGradeRow">
+        <label class="mo-lbl">Анги танигдахгүй бол:
+          <select id="moDefGrade" class="mo-inp mo-inp-sm">
+            <option value="0">Ангигүй</option>
+            <option value="1">1-р анги</option><option value="2">2-р анги</option><option value="3">3-р анги</option>
+            <option value="4">4-р анги</option><option value="5">5-р анги</option><option value="6">6-р анги</option>
+            <option value="7">7-р анги</option><option value="8">8-р анги</option><option value="9">9-р анги</option>
+            <option value="10">10-р анги</option><option value="11">11-р анги</option><option value="12">12-р анги</option>
+          </select>
+        </label>
+      </div>
+      <div id="moPending"></div>
+      <button class="mo-btn mo-btn-main" id="moUploadBtn" onclick="moUpload()" disabled>Хадгалах</button>
+    </div>
+
+    <div class="mo-grades" id="moGrades"></div>
+    <div id="moList"></div>
+
+    <!-- LEVEL-ТЭЙ ТОГЛООМУУД (Дүрс хуваалт, Зүй тогтол) -->
+    <div id="mdPanel" style="display:none;">
+      <div class="md-hero">
+        <div class="md-hero-art" id="mdHeroArt" aria-hidden="true"></div>
+        <div class="md-hero-main">
+          <div class="md-hero-title" id="mdHeroTitle">Дүрс хуваалт</div>
+          <p class="md-hero-txt" id="mdHeroTxt">Дүрсийг ижил хэлбэртэй хэсгүүдэд хувааж өнгөөр будна. Хурдан бодох тусам оноо их.</p>
+          <div class="md-start">
+            <input id="mdName" class="mo-inp" placeholder="Нэрээ бичээрэй" maxlength="20" autocomplete="nickname" oninput="mdNameInput()" onkeydown="if(event.key==='Enter')mdStart()">
+            <button class="mo-btn mo-btn-main" id="mdPlayBtn" onclick="mdStart()">▶ Тоглох</button>
+          </div>
+        </div>
+      </div>
+      <div class="md-rules">
+        <span>🔓 Level-ийг давж байж дараагийнх нь нээгдэнэ</span>
+        <span>⏱ Оноо = level-ийн үнэ + үлдсэн минут бүрт 10</span>
+        <span>💡 2-р сэжүүр −20 оноо</span>
+        <span>🏁 Хугацаа дуусвал эсвэл «Гарах» дарвал оноо самбарт бичигдэнэ</span>
+      </div>
+      <div class="md-cols">
+        <div class="md-col">
+          <div class="md-h">Level-үүд <span id="mdProg"></span></div>
+          <div class="md-map" id="mdMap"></div>
+        </div>
+        <div class="md-col">
+          <div class="md-h">🏆 Онооны самбар</div>
+          <div id="mdBoard"></div>
+        </div>
+      </div>
+      <div id="mdAdminList" style="display:none;"></div>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<!-- ДҮРС ХУВААЛТ — ТОГЛОЛТ -->
+<div id="mdGameScreen" class="screen">
+  <div class="mo-view-wrap">
+    <div class="md-sticky" id="mdSticky">
+    <div class="md-bar">
+      <button class="mo-btn" id="mdExitBtn" onclick="mdExit()">✕ Гарах</button>
+      <div class="md-stat"><span>Тоглогч</span><b id="mdPName"></b></div>
+      <div class="md-stat"><span>Level</span><b id="mdLv"></b></div>
+      <div class="md-stat md-timer"><span>Хугацаа</span><b id="mdTime">0:00</b></div>
+      <div class="md-stat"><span>Оноо</span><b id="mdScore">0</b></div>
+    </div>
+    <div class="md-note" id="mdNote" role="status" aria-live="polite"></div>
+    </div>
+    <div class="mo-frame-wrap" id="mdFrameWrap"></div>
+  </div>
+</div>
+<div class="mo-ov" id="mdOverOv">
+  <div class="mo-modal md-over" role="dialog" aria-modal="true" aria-labelledby="mdOverHead">
+    <div class="md-over-head" id="mdOverHead">Тоглолт дууслаа</div>
+    <div id="mdOverBody"></div>
+    <div class="mo-modal-foot md-over-foot">
+      <button class="mo-btn" id="mdOverSol" onclick="mdCloseOver()">Бодолтыг харах</button>
+      <button class="mo-btn" onclick="mdGoHome()">Level-үүд</button>
+      <button class="mo-btn mo-btn-main" onclick="mdAgain()">▶ Дахин тоглох</button>
+    </div>
+  </div>
+</div>
+
+<!-- MO VIEW -->
+<div id="moViewScreen" class="screen">
+  <div class="mo-view-wrap">
+    <div class="mo-view-bar">
+      <button class="mo-btn" onclick="moBack()">← Жагсаалт</button>
+      <div class="mo-view-info">
+        <div class="mo-view-title" id="moViewTitle"></div>
+        <div class="mo-view-meta" id="moViewMeta"></div>
+      </div>
+      <div class="mo-view-nav">
+        <button class="mo-btn" id="moPrevBtn" onclick="moStep(-1)" aria-label="Өмнөх бодлого">‹</button>
+        <button class="mo-btn" id="moNextBtn" onclick="moStep(1)" aria-label="Дараагийн бодлого">›</button>
+        <button class="mo-btn" onclick="moFullscreen()" aria-label="Бүтэн дэлгэц">⤢</button>
+      </div>
+    </div>
+    <div class="mo-frame-wrap" id="moFrameWrap"></div>
+  </div>
+</div>
+
+<!-- MO HERO EDIT MODAL (админ) -->
+<div class="mo-ov" id="mhEdOv">
+  <div class="mo-modal mh-modal" role="dialog" aria-modal="true" aria-labelledby="mhEdHead">
+    <div class="mo-admin-title" id="mhEdHead">Толгойн зураг ба ишлэл</div>
+    <div class="mh-ed-prev" id="mhEdPrev"></div>
+    <label class="mo-lbl">Зураг (JPG, PNG, WEBP)<input id="mhEdFile" type="file" accept="image/*" class="mo-inp" onchange="mhPickImg(this.files[0])"></label>
+    <div class="mh-ed-row"><button class="mo-btn" onclick="mhClearImg()">Зураггүй болгох</button></div>
+    <label class="mo-lbl">Ишлэл<textarea id="mhEdQuote" class="mo-inp" rows="3" maxlength="300" oninput="mhPreview()"></textarea></label>
+    <label class="mo-lbl">Хэн хэлсэн<input id="mhEdAuthor" class="mo-inp" maxlength="80" oninput="mhPreview()"></label>
+    <div class="mo-modal-foot">
+      <button class="mo-btn" onclick="mhReset()">Анхны байдалд</button>
+      <button class="mo-btn" onclick="mhClose()">Болих</button>
+      <button class="mo-btn mo-btn-main" id="mhSaveBtn" onclick="mhSave()">Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+<!-- MO EDIT MODAL -->
+<div class="mo-ov" id="moEdOv">
+  <div class="mo-modal">
+    <div class="mo-admin-title">Бодлого засах</div>
+    <label class="mo-lbl">Гарчиг<input id="moEdTitle" class="mo-inp" maxlength="120"></label>
+    <label class="mo-lbl">Анги<select id="moEdGrade" class="mo-inp"></select></label>
+    <label class="mo-lbl">Сэдэв<input id="moEdTopic" class="mo-inp" maxlength="60" placeholder="Заавал биш"></label>
+    <label class="mo-lbl">Файлыг шинэчлэх (заавал биш)<input id="moEdFile" type="file" accept=".html,.htm,text/html" class="mo-inp"></label>
+    <div class="mo-modal-foot">
+      <button class="mo-btn" onclick="moCloseEdit()">Болих</button>
+      <button class="mo-btn mo-btn-main" onclick="moSaveEdit()">Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WORD QUIZ HOME ══ -->
+<div id="wqHomeScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#39ff14;">🔤 Тоглоом</div>
+  <h2 class="logo-title" style="background:linear-gradient(135deg,#39ff14,#4fc3f7,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">WORD QUIZ</h2>
+  <div class="logo-sub">Үсгүүдийн байршлыг тааж, үгийг олоорой!</div>
+
+  <!-- Хэл сонгох 3 багана -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;width:100%;max-width:900px;margin:28px auto 0;">
+
+    <!-- 🇲🇳 МОНГОЛ -->
+    <div class="mc-setup-box" style="border-color:rgba(57,255,20,.4);margin:0;">
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="line-height:1;margin-bottom:4px;"><svg width="48" height="32" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.3);"><rect width="16" height="32" fill="#C4272F"/><rect x="16" width="16" height="32" fill="#015197"/><rect x="32" width="16" height="32" fill="#C4272F"/></svg></div>
+        <div style="font-family:Orbitron,monospace;font-size:15px;font-weight:900;color:#39ff14;letter-spacing:3px;margin-top:8px;">МОНГОЛ</div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(57,255,20,.7);">Нэр</label>
+        <input class="mc-setup-inp" id="wqPlayerName" type="text" placeholder="Тоглогчийн нэр" maxlength="20" style="border-color:rgba(57,255,20,.3);">
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(57,255,20,.7);">Түвшин</label>
+        <div class="mc-reveal-grid" id="wqDiffGrid">
+          <button class="mc-reveal-btn active" data-diff="easy" onclick="wqSetDiff('easy','mn')">🟢 Easy</button>
+          <button class="mc-reveal-btn" data-diff="medium" onclick="wqSetDiff('medium','mn')">🟡 Medium</button>
+          <button class="mc-reveal-btn" data-diff="hard" onclick="wqSetDiff('hard','mn')">🔴 Hard</button>
+          <button class="mc-reveal-btn" data-diff="expert" onclick="wqSetDiff('expert','mn')">⚫ Expert</button>
+        </div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(57,255,20,.7);">Үгийн тоо</label>
+        <div class="mc-reveal-grid" id="wqCountGrid">
+          <button class="mc-reveal-btn" data-n="10" onclick="wqSetCount(10,'mn')">10</button>
+          <button class="mc-reveal-btn active" data-n="20" onclick="wqSetCount(20,'mn')">20</button>
+          <button class="mc-reveal-btn" data-n="30" onclick="wqSetCount(30,'mn')">30</button>
+          <button class="mc-reveal-btn" data-n="50" onclick="wqSetCount(50,'mn')">50</button>
+        </div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(57,255,20,.7);">Хугацаа</label>
+        <div class="mc-reveal-grid" id="wqTimeGrid">
+          <button class="mc-reveal-btn" data-t="10" onclick="wqSetTime(10,'mn')">10с</button>
+          <button class="mc-reveal-btn" data-t="15" onclick="wqSetTime(15,'mn')">15с</button>
+          <button class="mc-reveal-btn active" data-t="20" onclick="wqSetTime(20,'mn')">20с</button>
+          <button class="mc-reveal-btn" data-t="30" onclick="wqSetTime(30,'mn')">30с</button>
+        </div>
+      </div>
+      <button class="mc-start-btn" style="background:linear-gradient(135deg,#39ff14,#007700);color:#000;font-weight:900;" onclick="wqStartGame('mn')">▶ ТОГЛОХ</button>
+    </div>
+
+    <!-- 🇷🇺 ОРОС -->
+    <div class="mc-setup-box" style="border-color:rgba(79,195,247,.4);margin:0;">
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="line-height:1;margin-bottom:4px;"><svg width="48" height="32" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.3);"><rect width="48" height="32" fill="#fff"/><rect y="11" width="48" height="10" fill="#0039A6"/><rect y="21" width="48" height="11" fill="#D52B1E"/></svg></div>
+        <div style="font-family:Orbitron,monospace;font-size:15px;font-weight:900;color:#4fc3f7;letter-spacing:3px;margin-top:8px;">ОРОС</div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(79,195,247,.7);">Нэр</label>
+        <input class="mc-setup-inp" id="wqPlayerNameRu" type="text" placeholder="Тоглогчийн нэр" maxlength="20" style="border-color:rgba(79,195,247,.3);">
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(79,195,247,.7);">Түвшин</label>
+        <div class="mc-reveal-grid" id="wqDiffGridRu">
+          <button class="mc-reveal-btn active" style="--btn-active:#4fc3f7;" data-diff="easy" onclick="wqSetDiff('easy','ru')">🟢 Easy</button>
+          <button class="mc-reveal-btn" data-diff="medium" onclick="wqSetDiff('medium','ru')">🟡 Medium</button>
+          <button class="mc-reveal-btn" data-diff="hard" onclick="wqSetDiff('hard','ru')">🔴 Hard</button>
+          <button class="mc-reveal-btn" data-diff="expert" onclick="wqSetDiff('expert','ru')">⚫ Expert</button>
+        </div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(79,195,247,.7);">Үгийн тоо</label>
+        <div class="mc-reveal-grid" id="wqCountGridRu">
+          <button class="mc-reveal-btn" data-n="10" onclick="wqSetCount(10,'ru')">10</button>
+          <button class="mc-reveal-btn active" data-n="20" onclick="wqSetCount(20,'ru')">20</button>
+          <button class="mc-reveal-btn" data-n="30" onclick="wqSetCount(30,'ru')">30</button>
+          <button class="mc-reveal-btn" data-n="50" onclick="wqSetCount(50,'ru')">50</button>
+        </div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(79,195,247,.7);">Хугацаа</label>
+        <div class="mc-reveal-grid" id="wqTimeGridRu">
+          <button class="mc-reveal-btn" data-t="10" onclick="wqSetTime(10,'ru')">10с</button>
+          <button class="mc-reveal-btn" data-t="15" onclick="wqSetTime(15,'ru')">15с</button>
+          <button class="mc-reveal-btn active" data-t="20" onclick="wqSetTime(20,'ru')">20с</button>
+          <button class="mc-reveal-btn" data-t="30" onclick="wqSetTime(30,'ru')">30с</button>
+        </div>
+      </div>
+      <button class="mc-start-btn" style="background:linear-gradient(135deg,#4fc3f7,#0077aa);color:#000;font-weight:900;" onclick="wqStartGame('ru')">▶ ТОГЛОХ</button>
+    </div>
+
+    <!-- 🇬🇧 АНГЛИ -->
+    <div class="mc-setup-box" style="border-color:rgba(255,107,107,.4);margin:0;">
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="line-height:1;margin-bottom:4px;"><svg width="48" height="32" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.3);"><rect width="48" height="32" fill="#012169"/><path d="M0,0 L48,32 M48,0 L0,32" stroke="#fff" stroke-width="6"/><path d="M0,0 L48,32 M48,0 L0,32" stroke="#C8102E" stroke-width="3"/><path d="M24,0 V32 M0,16 H48" stroke="#fff" stroke-width="10"/><path d="M24,0 V32 M0,16 H48" stroke="#C8102E" stroke-width="6"/></svg></div>
+        <div style="font-family:Orbitron,monospace;font-size:15px;font-weight:900;color:#ff6b6b;letter-spacing:3px;margin-top:8px;">АНГЛИ</div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(255,107,107,.7);">Нэр</label>
+        <input class="mc-setup-inp" id="wqPlayerNameEn" type="text" placeholder="Тоглогчийн нэр" maxlength="20" style="border-color:rgba(255,107,107,.3);">
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(255,107,107,.7);">Түвшин</label>
+        <div class="mc-reveal-grid" id="wqDiffGridEn">
+          <button class="mc-reveal-btn active" data-diff="easy" onclick="wqSetDiff('easy','en')">🟢 Easy</button>
+          <button class="mc-reveal-btn" data-diff="medium" onclick="wqSetDiff('medium','en')">🟡 Medium</button>
+          <button class="mc-reveal-btn" data-diff="hard" onclick="wqSetDiff('hard','en')">🔴 Hard</button>
+          <button class="mc-reveal-btn" data-diff="expert" onclick="wqSetDiff('expert','en')">⚫ Expert</button>
+        </div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(255,107,107,.7);">Үгийн тоо</label>
+        <div class="mc-reveal-grid" id="wqCountGridEn">
+          <button class="mc-reveal-btn" data-n="10" onclick="wqSetCount(10,'en')">10</button>
+          <button class="mc-reveal-btn active" data-n="20" onclick="wqSetCount(20,'en')">20</button>
+          <button class="mc-reveal-btn" data-n="30" onclick="wqSetCount(30,'en')">30</button>
+          <button class="mc-reveal-btn" data-n="50" onclick="wqSetCount(50,'en')">50</button>
+        </div>
+      </div>
+      <div class="mc-setup-field">
+        <label class="mc-setup-label" style="color:rgba(255,107,107,.7);">Хугацаа</label>
+        <div class="mc-reveal-grid" id="wqTimeGridEn">
+          <button class="mc-reveal-btn" data-t="10" onclick="wqSetTime(10,'en')">10с</button>
+          <button class="mc-reveal-btn" data-t="15" onclick="wqSetTime(15,'en')">15с</button>
+          <button class="mc-reveal-btn active" data-t="20" onclick="wqSetTime(20,'en')">20с</button>
+          <button class="mc-reveal-btn" data-t="30" onclick="wqSetTime(30,'en')">30с</button>
+        </div>
+      </div>
+      <button class="mc-start-btn" style="background:linear-gradient(135deg,#ff6b6b,#aa0000);color:#fff;font-weight:900;" onclick="wqStartGame('en')">▶ PLAY</button>
+    </div>
+  </div>
+
+  <!-- Статистик -->
+  <div style="text-align:center;margin-top:16px;" id="wqDelAllWrap"></div>
+  <div id="wqStatLine" style="font-family:Share Tech Mono,monospace;font-size:12px;color:rgba(255,255,255,.3);text-align:center;margin-top:28px;letter-spacing:1px;"></div>
+  <!-- Leaderboard 3 багана -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;max-width:1100px;margin:12px auto 0;">
+    <div>
+      <div class="mc-lb-title" style="color:#39ff14;">🇲🇳 Монгол оноо</div>
+      <div id="wqLbMn" class="wq-lb-wrap"></div>
+    </div>
+    <div>
+      <div class="mc-lb-title" style="color:#4fc3f7;">🇷🇺 Орос оноо</div>
+      <div id="wqLbRu" class="wq-lb-wrap"></div>
+    </div>
+    <div>
+      <div class="mc-lb-title" style="color:#ff6b6b;">🇬🇧 Англи оноо</div>
+      <div id="wqLbEn" class="wq-lb-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WORD QUIZ GAME ══ -->
+<div id="wqGameScreen" class="screen">
+  <div style="display:flex;justify-content:space-between;align-items:center;width:100%;max-width:600px;margin-bottom:10px;">
+    <div id="wqLangFlag" style="font-size:28px;"></div>
+    <div id="wqPlayerLabel" style="font-family:Share Tech Mono,monospace;font-size:13px;color:rgba(57,255,20,.7);">👤 Тоглогч</div>
+    <div id="wqProgress" style="font-family:Orbitron,monospace;font-size:13px;color:#39ff14;">1/20</div>
+    <div id="wqScore" style="font-family:Orbitron,monospace;font-size:13px;color:#ffd700;">⭐ 0</div>
+  </div>
+  <div class="wq-timer-bar" style="width:100%;max-width:600px;">
+    <div class="wq-timer-fill" id="wqTimerFill"></div>
+  </div>
+  <div id="wqTimeLeft" style="font-family:Share Tech Mono,monospace;font-size:12px;text-align:center;margin-bottom:20px;color:rgba(57,255,20,.6);">0с</div>
+  <div class="wq-scramble-wrap" id="wqScramble"></div>
+  <div class="wq-answer-tiles" id="wqAnswerTiles"></div>
+  <div id="wqHintWrap" style="max-width:400px;width:100%;text-align:center;margin:0 auto 12px;min-height:22px;">
+    <span id="wqHintText" style="font-family:Share Tech Mono,monospace;font-size:13px;color:rgba(57,255,20,.55);font-style:italic;"></span>
+  </div>
+  <div style="margin:8px auto;text-align:center;width:100%;max-width:400px;">
+    <input class="wq-inp" id="wqInput" type="text" placeholder="Үгийг бичнэ үү..." oninput="wqCheckInput(this.value)" onkeydown="if(event.key==='Enter')wqSubmit()" autocomplete="off" autocorrect="off" spellcheck="false">
+  </div>
+  <div id="wqFeedback" style="font-family:Orbitron,monospace;font-size:14px;height:28px;text-align:center;letter-spacing:2px;"></div>
+  <button onclick="wqSkip()" id="wqSkipBtn" style="margin-top:12px;font-family:Orbitron,monospace;font-size:10px;padding:8px 20px;border-radius:8px;border:1px solid rgba(57,255,20,.3);background:transparent;color:rgba(57,255,20,.5);cursor:pointer;letter-spacing:1px;">⏭ АЛГАСАХ</button>
+</div>
+
+<!-- ══ WORD QUIZ RESULT ══ -->
+<div id="wqResultScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#39ff14;">🎉 Дууслаа!</div>
+  <div id="wqResultTitle" class="logo-title" style="font-size:clamp(24px,4vw,48px);background:linear-gradient(135deg,#39ff14,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></div>
+  <div id="wqResultStats" style="font-family:Share Tech Mono,monospace;font-size:14px;color:rgba(255,255,255,.7);margin:16px 0;text-align:center;line-height:2;"></div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
+    <button onclick="wqPlayAgain()" style="font-family:Orbitron,monospace;font-size:12px;padding:14px 28px;border-radius:10px;border:2px solid #39ff14;background:rgba(57,255,20,.1);color:#39ff14;cursor:pointer;letter-spacing:1px;">↺ ДАХИН ТОГЛОХ</button>
+    <button onclick="wqShareResult()" style="font-family:Orbitron,monospace;font-size:12px;padding:14px 28px;border-radius:10px;border:2px solid var(--cyan);background:rgba(0,245,255,.08);color:var(--cyan);cursor:pointer;letter-spacing:1px;">📤 ХУВААЛЦАХ</button>
+    <button onclick="showWQHome()" style="font-family:Orbitron,monospace;font-size:12px;padding:14px 28px;border-radius:10px;border:2px solid rgba(255,255,255,.3);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;letter-spacing:1px;">🏠 НҮҮР</button>
+  </div>
+</div>
+
+<!-- ══ WORD ADMIN SCREEN ══ -->
+<div id="wordAdminScreen" class="screen">
+  <div class="logo-eyebrow" style="color:#39ff14;">🔐 Admin</div>
+  <h2 class="logo-title" style="font-size:clamp(22px,4vw,44px);background:linear-gradient(135deg,#39ff14,#4fc3f7,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ҮГ УДИРДАХ</h2>
+
+  <div class="mc-setup-box" style="border-color:rgba(57,255,20,.4);max-width:560px;">
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <button onclick="wqSeedRussianWords()" style="flex:1;font-family:Orbitron,monospace;font-size:10px;padding:10px;border-radius:8px;border:1px solid rgba(79,195,247,.4);background:rgba(79,195,247,.08);color:#4fc3f7;cursor:pointer;letter-spacing:1px;">🇷🇺 ОРОС 584 ҮГ НЭМЭХ</button>
+      <button onclick="wqSeedEnglishWords()" style="flex:1;font-family:Orbitron,monospace;font-size:10px;padding:10px;border-radius:8px;border:1px solid rgba(255,107,107,.4);background:rgba(255,107,107,.08);color:#ff6b6b;cursor:pointer;letter-spacing:1px;">🇬🇧 АНГЛИ 939 ҮГ НЭМЭХ</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <button class="mc-reveal-btn active" id="waLangMn" onclick="waSetLang('mn')" style="flex:1;">🇲🇳 Монгол</button>
+      <button class="mc-reveal-btn" id="waLangRu" onclick="waSetLang('ru')" style="flex:1;">🇷🇺 Орос</button>
+      <button class="mc-reveal-btn" id="waLangEn" onclick="waSetLang('en')" style="flex:1;">🇬🇧 Англи</button>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label" id="waWordLabel">🇲🇳 Монгол үг</label>
+      <input class="mc-setup-inp" id="waWord" type="text" placeholder="Жишээ: ХАДГАЛАХ">
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Түвшин</label>
+      <div class="mc-reveal-grid" id="waDiffGrid">
+        <button class="mc-reveal-btn active" data-diff="easy" onclick="waSetDiff('easy')">🟢 Easy</button>
+        <button class="mc-reveal-btn" data-diff="medium" onclick="waSetDiff('medium')">🟡 Medium</button>
+        <button class="mc-reveal-btn" data-diff="hard" onclick="waSetDiff('hard')">🔴 Hard</button>
+        <button class="mc-reveal-btn" data-diff="expert" onclick="waSetDiff('expert')">⚫ Expert</button>
+      </div>
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Төрөл (нэмэлт)</label>
+      <input class="mc-setup-inp" id="waCategory" type="text" placeholder="Жишээ: амьтан, хоол, газар...">
+    </div>
+    <div class="mc-setup-field">
+      <label class="mc-setup-label">Hint / Тайлбар</label>
+      <input class="mc-setup-inp" id="waHint" type="text" placeholder="Жишээ: Монгол улсын нийслэл хот">
+    </div>
+    <button class="mc-start-btn" style="background:linear-gradient(135deg,#39ff14,#007700);color:#000;font-weight:900;" onclick="waAddWord()">
+      <span id="waAddText">➕ ҮГ НЭМЭХ</span>
+    </button>
+    <div id="waMsg" style="margin-top:12px;text-align:center;font-family:Share Tech Mono,monospace;font-size:13px;"></div>
+  </div>
+
+  <div style="max-width:900px;width:100%;margin:32px auto 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+      <div class="mc-lb-title" style="color:#39ff14;">📋 Нийт үгнүүд</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <select id="waDiffFilter" onchange="waRenderList()" style="font-family:Share Tech Mono,monospace;font-size:12px;padding:8px 12px;border-radius:8px;border:1px solid rgba(57,255,20,.25);background:rgba(0,0,0,.4);color:#fff;">
+          <option value="all">Бүгд</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="expert">Expert</option>
+        </select>
+        <input id="waSearch" type="text" placeholder="Хайх..." oninput="waRenderList()" style="font-family:Share Tech Mono,monospace;font-size:12px;padding:8px 12px;border-radius:8px;border:1px solid rgba(57,255,20,.25);background:rgba(0,0,0,.3);color:#fff;width:150px;">
+        <button onclick="waLoadWords()" style="font-family:Orbitron,monospace;font-size:10px;padding:8px 14px;border-radius:8px;border:1px solid rgba(57,255,20,.3);background:rgba(57,255,20,.08);color:#39ff14;cursor:pointer;">↻ Шинэчлэх</button>
+      </div>
+    </div>
+    <div id="waWordCount" style="font-family:Share Tech Mono,monospace;font-size:12px;color:rgba(57,255,20,.6);margin-bottom:12px;"></div>
+    <div id="waWordList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;"></div>
+  </div>
+</div>
+
+<!-- ══ LOGO QUIZ GAME ══ -->
+<div id="lqGameScreen" class="screen">
+  <div class="game-header">
+    <button class="game-back" onclick="lqGoHome()">← Буцах</button>
+    <div class="game-round-name" style="color:#ff9500;text-shadow:0 0 20px #ff9500;" id="lqPlayerLabel"></div>
+    <div class="game-timer-wrap"><div class="mc-timer" id="lqTimer" style="color:#ff9500;">00:00.0</div></div>
+  </div>
+  <div class="mc-phase-banner" id="lqPhaseBanner" style="color:#ff9500;">— ЛОГОГ ТААНА УУ —</div>
+  <div class="lq-logo-wrap"><div id="lqLogoWrap" class="lq-logo-svg-wrap"></div></div>
+  <div class="fl-feedback" id="lqFeedback"></div>
+  <div class="fl-progress" id="lqProgress"></div>
+  <div class="fl-search-wrap">
+    <input id="lqAnswerInput" class="fl-search-inp" type="text" placeholder="✏️ Логоны нэрийг бичнэ үү..." oninput="lqFilterSuggestions(this.value)" onkeydown="if(event.key==='Enter')lqSubmitAnswer()" autocomplete="off">
+    <button onclick="lqSubmitAnswer()" style="background:#ff9500;color:#000;border:none;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer;margin-left:8px;">✓</button>
+  </div>
+  <div class="fl-country-grid" id="lqSuggestGrid"></div>
+</div>
+<!-- ══ LOGO QUIZ RESULT ══ -->
+<div class="m-overlay" id="lqResultOverlay">
+  <div class="modal" style="border-color:#ff9500;">
+    <div class="m-head">
+      <div><div class="m-cat" style="color:#ff9500;">🏆 ТОГЛОЛТ ДУУСЛАА</div></div>
+      <button class="close-btn" onclick="lqCloseResult()">✕</button>
+    </div>
+    <div class="mc-result-stats" id="lqResultStats"></div>
+    <div class="m-actions">
+      <button class="btn-back" onclick="lqCloseResult()">← Буцах</button>
+      <button class="btn-done" onclick="lqPlayAgain()">↺ Дахин тоглох</button>
+    </div>
+  </div>
+</div>
+<!-- ══ QPAY MODAL ══ -->
+<div class="m-overlay" id="qpayOverlay">
+  <div class="modal" style="padding:0;">
+    <!-- Header -->
+    <div class="sub-header">
+      <button class="close-btn" onclick="closeQPay()" style="position:absolute;top:16px;right:16px;">✕</button>
+      <div class="sub-header-badge">⭐ Bolor Games Premium</div>
+      <div class="sub-header-title">Subscription <span>төлбөр</span></div>
+      <div class="sub-header-desc">Бүх тоглоом, IELTS бэлтгэлийн бүрэн эрх</div>
+    </div>
+
+    <!-- Step 1: Plan сонгох -->
+    <!-- Алдааны мэдэгдэл: бүх алхамд харагдана -->
+    <div id="qpayError" role="alert" style="display:none;margin:14px 24px 0;padding:12px 16px;border-radius:12px;background:rgba(229,57,53,.12);border:1px solid rgba(229,57,53,.45);color:#ff8a80;font-family:Rajdhani,sans-serif;font-size:15px;font-weight:600;line-height:1.45;text-align:center;"></div>
+    <div id="qpayStep1">
+      <div class="sub-plans">
+        <div class="sub-plan plan-1" onclick="subSelectPlan(this,1,18000)">
+          <div class="sub-plan-months">1 сар</div>
+          <div class="sub-plan-price"><sup>₮</sup>18,000</div>
+          <div class="sub-plan-per">сард ₮18,000</div>
+        </div>
+        <div class="sub-plan plan-3" onclick="subSelectPlan(this,3,45000)">
+          <div class="sub-plan-popular">Хамгийн ашигтай</div>
+          <div class="sub-plan-months">3 сар</div>
+          <div class="sub-plan-price"><sup>₮</sup>45,000</div>
+          <div class="sub-plan-per">сард ₮15,000</div>
+          <div class="sub-plan-save" style="background:rgba(167,139,250,.15);color:#a78bfa;">сард ₮3,000 хэмнэнэ</div>
+        </div>
+        <div class="sub-plan plan-6" onclick="subSelectPlan(this,6,90000)">
+          <div class="sub-plan-months">6 сар</div>
+          <div class="sub-plan-price"><sup>₮</sup>90,000</div>
+          <div class="sub-plan-per">сард ₮15,000</div>
+          <div class="sub-plan-save" style="background:rgba(52,211,153,.15);color:#34d399;">сард ₮3,000 хэмнэнэ</div>
+        </div>
+      </div>
+      <div class="sub-divider" style="margin-top:20px;"></div>
+      <div class="sub-features">
+        <div class="sub-feature"><span class="sub-feature-icon">✓</span>Бүх тоглоом нээлттэй</div>
+        <div class="sub-feature"><span class="sub-feature-icon">✓</span>Дээд оноо тэмцэх</div>
+        <div class="sub-feature"><span class="sub-feature-icon">✓</span>Тоглолт үүсгэх</div>
+        <div class="sub-feature"><span class="sub-feature-icon">✓</span>Найзтай хамт тоглох</div>
+        <div class="sub-feature"><span class="sub-feature-icon">✓</span>Шинэ тоглоомууд</div>
+        <div class="sub-feature"><span class="sub-feature-icon">✓</span>Онлайн дэмжлэг</div>
+      </div>
+      <div class="sub-cta">
+        <button class="sub-btn" id="subPayBtn" onclick="subProceedPay()" disabled>Эхлэхийн тулд тариф сонгоно уу</button>
+        <div class="sub-note">QPay · Голомт банк · Хаан банк · TDB · Хас банк · Монгол банк</div>
+      </div>
+    </div>
+
+    <!-- Step 2: QR — QPay App Style -->
+    <div id="qpayStep2" style="display:none;">
+      <div class="qp2-wrap">
+        <!-- Amount header -->
+        <div class="qp2-amount-bar">
+          <button class="qp2-back" onclick="qpayBack()">‹</button>
+          <div class="qp2-amount-info">
+            <div class="qp2-amount-label">Төлөх дүн</div>
+            <div class="qp2-amount-val" id="qpayPlanLabel">₮18,000</div>
+          </div>
+          <div style="width:32px;"></div>
+        </div>
+
+        <!-- App-аар төлөх -->
+        <div class="qp2-section-title" id="qp2AppTitle">Апп-аар төлөх</div>
+        <div class="qp2-bank-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="qp2-bank-item" onclick="qpayOpenApp('state')">
+            <div class="qp2-bank-icon" style="background:#1a3a8c;overflow:hidden;">
+              <img src="data:image/webp;base64,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" loading="lazy" decoding="async" style="width:44px;height:44px;object-fit:cover;">
+            </div>
+            <div class="qp2-bank-name">Төрийн банк</div>
+          </div>
+          <div class="qp2-bank-item" onclick="qpayOpenApp('xac')">
+            <div class="qp2-bank-icon" style="background:#fff;overflow:hidden;">
+              <img src="data:image/webp;base64,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" loading="lazy" decoding="async" style="width:44px;height:44px;object-fit:contain;">
+            </div>
+            <div class="qp2-bank-name">Хас банк</div>
+          </div>
+          <div class="qp2-bank-item" onclick="qpayOpenApp('tdb')">
+            <div class="qp2-bank-icon" style="background:#2196f3;overflow:hidden;">
+              <img src="data:image/webp;base64,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" loading="lazy" decoding="async" style="width:44px;height:44px;object-fit:cover;border-radius:10px;">
+            </div>
+            <div class="qp2-bank-name">TDB online</div>
+          </div>
+          <div class="qp2-bank-item" onclick="qpayOpenApp('golomt')">
+            <div class="qp2-bank-icon" style="background:#fff;overflow:hidden;">
+              <img src="data:image/webp;base64,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" loading="lazy" decoding="async" style="width:44px;height:44px;object-fit:contain;">
+            </div>
+            <div class="qp2-bank-name">Голомт банк</div>
+          </div>
+          <div class="qp2-bank-item" onclick="qpayOpenApp('khan')">
+            <div class="qp2-bank-icon" style="background:#1b5e20;overflow:hidden;">
+              <img src="data:image/webp;base64,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" loading="lazy" decoding="async" style="width:44px;height:44px;object-fit:cover;border-radius:10px;">
+            </div>
+            <div class="qp2-bank-name">Хаан банк</div>
+          </div>
+        </div>
+
+        <!-- Device note -->
+        <div class="qp2-note" id="qp2DeviceNote">
+          <span class="qp2-note-icon">ⓘ</span>
+          <span id="qp2DeviceText">Гар утаснаас бусад төхөөрөмжөөр орж байгаа бол QPay-ээр төлнө үү.</span>
+        </div>
+
+        <!-- QR code -->
+        <div class="qp2-qr-section">
+          <div class="qp2-qr-box" id="qpayQR"></div>
+          <div class="qp2-timer-row">
+            <span id="qpayTimer" class="qp2-timer">5:00</span>
+          </div>
+        </div>
+
+        <!-- Action -->
+        <div class="qp2-action">
+          <button class="qp2-pay-btn" onclick="checkQPayStatus()">Төлбөр шалгах</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Амжилт -->
+    <div id="qpayStep3" style="display:none;">
+      <div class="qpay-success">
+        <div class="qpay-success-icon">🎉</div>
+        <div class="qpay-success-title">АМЖИЛТТАЙ!</div>
+        <div class="qpay-success-desc" id="qpaySuccessDesc">Subscription идэвхжлээ.<br>Бүх тоглоомыг тоглоорой!</div>
+        <button class="qpay-close-btn" onclick="closeQPay()">ТОГЛООМОО ЭХЛЭХ →</button>
+      </div>
+    </div>
+
+    <div id="qpayLoading" style="display:none;">
+      <div style="padding:40px;text-align:center;">
+        <div style="font-size:32px;margin-bottom:12px;">⏳</div>
+        <div style="font-family:Orbitron,monospace;font-size:13px;color:#ff9500;letter-spacing:2px;">БОЛОВСРУУЛЖ БАЙНА...</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══ SHARED MODAL ══ -->
+<div class="m-overlay" id="mOverlay" onclick="mOvClick(event)">
+  <div class="modal">
+    <div class="m-head">
+      <div><div class="m-cat" id="mCat"></div><div class="m-pts" id="mPts"></div></div>
+      <button class="close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <!-- Асуулт + зураг (зураг байвал хажуу тийш) -->
+    <div id="qqContentRow">
+      <div class="m-hint" id="mHint"></div>
+      <div class="q-image-wrap" id="qImageWrap"><img id="qImage" src="" alt=""></div>
+    </div>
+    <div id="mediaArea"></div>
+    <div class="ans-reveal" id="ansReveal">
+      <div class="ans-lbl">Хариулт</div>
+      <div class="ans-txt" id="ansTxt"></div>
+    </div>
+    <div class="award-section" id="awardSection" style="display:none;">
+      <div class="award-title">— Зөв хариулсан тоглогчид оноо өг —</div>
+      <div class="award-players" id="awardPlayers"></div>
+    </div>
+    <div class="m-actions">
+      <button class="btn btn-back" onclick="closeModal()">← Буцах</button>
+      <button class="btn btn-ans" onclick="revealAns()">★ Хариулт</button>
+      <button class="btn btn-done" onclick="doneQuestion()">✓ Дуусгах</button>
+    </div>
+  </div>
+</div>
+
+<!-- PLAYER SETUP -->
+<div class="ps-overlay" id="psOverlay">
+  <div class="ps-box">
+    <div class="ps-title">👥 ТОГЛОГЧИД</div>
+    <div class="ps-sub">Тоглогчийн тоо болон нэрийг оруулна уу</div>
+    <div class="pc-label">Тоглогчийн тоо</div>
+    <div class="pc-btns">
+      <button class="pc-btn" onclick="setPC(1)">1</button>
+      <button class="pc-btn" onclick="setPC(2)">2</button>
+      <button class="pc-btn active" onclick="setPC(3)">3</button>
+      <button class="pc-btn" onclick="setPC(4)">4</button>
+      <button class="pc-btn" onclick="setPC(5)">5</button>
+    </div>
+    <div class="pnames-wrap" id="pNamesWrap"></div>
+    <button class="ps-start" onclick="startWithPlayers()">▶ ТОГЛОЛТ ЭХЛЭХ</button>
+  </div>
+</div>
+
+<!-- MQ EDITOR -->
+<div class="ed-overlay" id="mqEdOverlay">
+  <div class="ed-header">
+    <div class="ed-title">✏ MUSIC QUIZ — ЗАСАХ</div>
+    <input class="ed-rname" id="mqEdRName" type="text" placeholder="Тоглолтын нэр...">
+    <button class="ed-close" onclick="mqCloseEditor()">✕</button>
+  </div>
+  <div class="ed-body" id="mqEdBody"></div>
+  <div class="ed-footer">
+    <span class="save-st" id="mqSaveSt">✓ ХАДГАЛЛАА</span>
+    <button class="btn-save" onclick="mqSaveEd()">💾 Хадгалах</button>
+  </div>
+</div>
+
+<!-- QQ EDITOR -->
+<div class="ed-overlay" id="qqEdOverlay">
+  <div class="ed-header">
+    <div class="ed-title">✎ QUANTUM QUIZ — ЗАСАХ</div>
+    <input class="ed-rname" id="qqEdRName" type="text" placeholder="Тоглолтын нэр...">
+    <button class="ed-close" onclick="qqCloseEditor()">✕</button>
+  </div>
+  <div class="ed-body" id="qqEdBody"></div>
+  <div class="ed-footer">
+    <span class="save-st" id="qqSaveSt">✓ ХАДГАЛЛАА</span>
+    <button class="btn-save" onclick="qqSaveEd()">💾 Хадгалах</button>
+  </div>
+</div>
+
+<!-- NEW ROUND (shared) -->
+<div class="nr-ov" id="nrOv">
+  <div class="nr-box">
+    <h2 id="nrTitle">+ ШИНЭ ТОГЛОЛТ</h2>
+    <div class="nr-lbl">Тоглолтын нэр</div>
+    <input class="nr-inp" id="nrInp" type="text" placeholder="Нэр оруулна уу..." maxlength="50">
+    <div class="nr-btns">
+      <button class="nr-cancel" onclick="closeNR()">Цуцлах</button>
+      <button class="nr-create" onclick="createRound()">✓ Үүсгэх</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════ LINGUARUSH — IELTS бэлтгэл (бүх хэрэглэгчид) ══════════════════════
+     Толгой хэсгийг app.js өөрөө зурдаг (lrRenderMasthead). Тиймээс энд
+     хуучин неон гарчиг байхгүй — байвал хормын зуур анивчиж харагддаг. -->
+<div id="lrScreen" class="screen lr-editorial">
+  <div class="rounds-section">
+    <div id="lrBreadcrumb" class="qr-fp-breadcrumb"></div>
+    <div id="lrContent"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════ IELTS LISTENING ЗАСВАРЛАГЧ (блок-бүтэцтэй) ══════════════════════ -->
+<div id="lrIeltsEditScreen" class="screen">
+  <div class="ielts-ed-wrap">
+    <div class="ielts-ed-head">
+      <button class="ielts-back-btn" onclick="lrIeltsEditExit()">← Буцах</button>
+      <h2 class="ielts-ed-title">🎧 IELTS Listening тест засварлах</h2>
+    </div>
+
+    <div class="ielts-ed-section ielts-import-section">
+      <div class="ielts-blocks-head">
+        <h3>📥 Бэлэн загвар импортлох</h3>
+        <span class="ielts-hint">Claude-аас авсан JSON-оо доор наагаад "Импортлох" дарна. Бүх блок, хүснэгт, асуулт автоматаар орно.</span>
+      </div>
+      <textarea id="lrIeltsImportBox" class="ielts-ta" rows="4" placeholder='Энд JSON наана уу... ж: {"name":"Test 1","blocks":[...],"answers":{...}}'></textarea>
+      <div class="ielts-import-btns">
+        <button class="ielts-import-btn" onclick="lrIeltsImport()">📥 Импортлох</button>
+        <button class="ielts-import-btn ghost" onclick="lrIeltsExport()">📤 Одоогийнхыг JSON болгох</button>
+        <button class="ielts-import-btn ghost" onclick="lrIeltsDownload()">💾 JSON файл татах</button>
+        <label class="ielts-import-btn ghost" style="cursor:pointer;">📂 JSON файл оруулах
+          <input type="file" accept="application/json,.json" style="display:none;" onchange="lrIeltsUploadJson(this)">
+        </label>
+      </div>
+    </div>
+
+    <div class="ielts-ed-section">
+      <label class="ielts-lbl">Тестийн нэр</label>
+      <input id="lrIeltsName" class="ielts-inp" placeholder="ж: Test 1 — Listening">
+
+      <label class="ielts-lbl">Хугацаа (минут) — 0 бол таймергүй</label>
+      <input id="lrIeltsDuration" class="ielts-inp" type="number" min="0" placeholder="Хоосон бол нэрнээс автоматаар (Listening 40, Reading 60, Writing 60)" style="max-width:100%;">
+
+      <label class="ielts-lbl">Аудио (сонсох файл)</label>
+      <div class="ielts-audio-row">
+        <input id="lrIeltsAudioUrl" class="ielts-inp" placeholder="Аудио URL (mp3 линк) эсвэл доор файл оруулна уу">
+        <label class="ielts-upl-btn">📁 Файл сонгох
+          <input type="file" accept="audio/*" style="display:none;" onchange="lrIeltsAudioUpload(this)">
+        </label>
+      </div>
+      <div id="lrIeltsAudioPreview" class="ielts-audio-preview"></div>
+
+      <label class="ielts-lbl">📄 Audioscript (аудионы бичвэр) — заавал биш</label>
+      <textarea id="lrIeltsScript" class="ielts-ta" rows="4" placeholder="Аудионы бичвэрийг энд тавьж болно. Тоглогч хариултаа шалгасны дараа 'Audioscript харах' товчоор хажуу талд нээгдэнэ. (Хоосон бол товч гарахгүй.)"></textarea>
+    </div>
+
+    <div class="ielts-ed-section">
+      <div class="ielts-blocks-head">
+        <h3>📦 Блокууд</h3>
+        <span class="ielts-hint">Нөхөх нүдийг <b>{{1}}</b>, <b>{{2}}</b> гэж бичнэ. Дараа нь доор "Хариултын түлхүүр"-т тэдгээрийн зөв хариултыг оруулна.</span>
+      </div>
+      <div id="lrIeltsBlocks" class="ielts-blocks"></div>
+      <div class="ielts-add-row">
+        <button onclick="lrIeltsAddBlock('heading')">+ Гарчиг</button>
+        <button onclick="lrIeltsAddBlock('instruction')">+ Заавар</button>
+        <button onclick="lrIeltsAddBlock('note')">+ Тэмдэглэл/текст</button>
+        <button onclick="lrIeltsAddBlock('tips')">+ 💡 Зөвлөмж (tips)</button>
+        <button onclick="lrIeltsAddBlock('passage')">+ Уншлагын текст</button>
+        <button onclick="lrIeltsAddBlock('essay')">+ Эссэ бичих</button>
+        <button onclick="lrIeltsAddBlock('model')">+ Жишээ хариулт</button>
+        <button onclick="lrIeltsAddBlock('table')">+ Хүснэгт</button>
+        <button onclick="lrIeltsAddBlock('image')">+ Зураг</button>
+        <button onclick="lrIeltsAddBlock('audio')">+ Аудио (хэсэг)</button>
+        <button onclick="lrIeltsAddBlock('mcq')">+ Сонголт (A/B/C)</button>
+        <button onclick="lrIeltsAddBlock('multi')">+ Олон сонголт (TWO)</button>
+        <button onclick="lrIeltsAddBlock('matching')">+ Тохируулга (matching)</button>
+        <button onclick="lrIeltsAddBlock('flowchart')">+ ⬇️ Урсгал диаграм (flow-chart)</button>
+      </div>
+    </div>
+
+    <div class="ielts-ed-section">
+      <div class="ielts-blocks-head">
+        <h3>🔑 Хариултын түлхүүр</h3>
+        <span class="ielts-hint">Нөхөх нүд бүрийн зөв хариулт. Хэд хэдэн зөвшөөрөгдөх хариултыг <b>/</b> тэмдгээр тусгаарлана (ж: <b>knot/knots</b>).</span>
+      </div>
+      <div id="lrIeltsAnswerKey" class="ielts-answer-key"></div>
+      <button class="ielts-rescan-btn" onclick="lrIeltsRescanGaps()">↻ Нөхөх нүднүүдийг дахин уншуулах</button>
+    </div>
+
+    <div class="ielts-ed-footer">
+      <button class="ielts-save-btn" onclick="lrIeltsSave()">💾 Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ IELTS LISTENING ТОГЛОГЧ ══════════════════════ -->
+<div id="lrIeltsPlayScreen" class="screen">
+  <div class="ielts-play-wrap">
+    <div class="ielts-play-head">
+      <button class="ielts-back-btn" onclick="lrIeltsPlayExit()">← Гарах</button>
+      <h2 id="lrIeltsPlayTitle" class="ielts-play-title">Listening</h2>
+      <div id="lrIeltsPlayTimer" class="ielts-play-timer"></div>
+    </div>
+    <div id="lrIeltsPlayAudio" class="ielts-play-audio"></div>
+    <div id="lrIeltsPlayBody" class="ielts-play-body"></div>
+    <div class="ielts-play-footer">
+      <button id="lrIeltsSubmitBtn" class="ielts-submit-btn" onclick="lrIeltsSubmit()">✓ Хариултаа шалгах</button>
+      <button id="lrIeltsFinishBtn" class="ielts-finish-btn" onclick="lrIeltsFinishEarly()">⏹ Дуусгаад дүн харах</button>
+    </div>
+    <div id="lrIeltsPlayResult" class="ielts-play-result" style="display:none;"></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════ IELTS ФОЛДЕР СОЛИХ ══════════════════════ -->
+<div id="lrMoveOverlay" class="m-overlay" onclick="if(event.target===this)lrCloseMoveOverlay()">
+  <div class="modal lr-move-box" style="border-color:rgba(244,114,182,.4);width:min(94vw,420px);padding:24px;">
+    <h3 id="lrMoveTitle" class="lr-move-h">Фолдер солих</h3>
+    <div id="lrMoveList" class="lr-move-list"></div>
+    <button class="lr-move-cancel" onclick="lrCloseMoveOverlay()">Болих</button>
+  </div>
+</div>
+
+
+<!-- QR HOME: асуултын сангийн жагсаалт -->
+<div id="qrHomeScreen" class="screen">
+  <div class="qr-float-bg" id="qrFloatBg"></div>
+  <div class="logo-eyebrow" style="color:#8b5cf6;">⚡ Live Trivia Arena</div>
+  <h2 class="logo-title qr-gold">QUIZ<br>RUSH</h2>
+  <div class="logo-sub">Ангийн шууд тэмцээн</div>
+  <div class="qr-hero-btns">
+    <button class="qr-btn-join-big" onclick="showQRJoin()">🎮 Кодоор нэгдэх</button>
+    <button class="qr-btn-search-big" onclick="showQRSearch()">🔍 Бүх сангаас асуулт хайх</button>
+    <button class="qr-btn-lb-big" onclick="showQRLeaderboard(null)">🏆 Нийт лидерборд</button>
+  </div>
+  <div class="qr-stats-badge-row">
+    <div class="qr-stats-badge" id="qrStatsBadge"></div>
+    <button class="qr-refresh-btn" onclick="qrForceRefresh()" title="Шинэ тестүүдийг шууд харах бол дарна уу">🔄 Шинэчлэх</button>
+  </div>
+  <div class="rounds-section">
+    <div class="qr-folder-toolbar">
+      <div class="rounds-title" style="color:rgba(139,92,246,.6);margin:0;">— Миний асуултын сангууд —</div>
+      <button class="qr-add-folder-btn" id="qrAddFolderBtn" style="display:none;" onclick="qrCreateFolder()">📁 + Фолдер</button>
+    </div>
+    <div id="qrQuizFolderedContainer"></div>
+  </div>
+  <div id="qrImportWrap" style="display:none;margin-top:16px;text-align:center;">
+    <label class="qr-import-lbl">
+      📥 JSON import<input type="file" accept=".json" style="display:none;" onchange="qrImportJSON(this)">
+    </label>
+  </div>
+</div>
+
+<!-- QR SEARCH: бүх сангаас асуулт хайх -->
+<div id="qrSearchScreen" class="screen">
+  <div class="qr-search-wrap">
+    <button class="qr-back-btn" style="margin-bottom:14px;" onclick="showQRHome()">← Буцах</button>
+    <div class="logo-eyebrow" style="color:#8b5cf6;">🔍 QuizRush</div>
+    <h2 class="logo-title qr-gold" style="font-size:34px;">АСУУЛТ ХАЙХ</h2>
+    <div class="qr-search-status" id="qrSearchStatus"></div>
+    <input class="qr-search-inp" id="qrSearchInp" type="text" placeholder="Асуултын текст оруулна уу…" autocomplete="off" oninput="qrSearchOnInput()">
+    <div class="qr-search-count" id="qrSearchCount"></div>
+    <div class="qr-search-results" id="qrSearchResults"></div>
+  </div>
+</div>
+
+<!-- QR LEADERBOARD -->
+<div id="qrLbScreen" class="screen">
+  <div class="qr-lb-wrap">
+    <button class="qr-back-btn" id="qrLbBackBtn" style="margin-bottom:14px;" onclick="showQRHome()">← Буцах</button>
+    <div class="qr-lb-header">
+      <div class="qr-lb-crown">🏆</div>
+      <h2 class="qr-lb-title" id="qrLbTitle">ЛИДЕРБОРД</h2>
+      <div class="qr-lb-subtitle">Хамгийн олон тест ажилласан тоглогчид</div>
+    </div>
+    <div class="qr-lb-list" id="qrLbList"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════ MY MAJOR (Анагаах ухааны мэргэжил сонголт — QuizRush → Анагаах ухаан фолдер дотроос эхэлдэг) ══════════════════════ -->
+
+<!-- MM INTENT SELECT (эхний асуулт) -->
+<div id="mmIntentScreen" class="screen mm-bg">
+  <div class="mm-quiz-wrap">
+    <div class="mm-eyebrow">0 / 119</div>
+    <div class="mm-q-card">
+      <div class="mm-q-text">Та аль чиглэлийг илүү сонирхож байна вэ? <span style="opacity:.6;font-size:14px;">(олноор сонгож болно, эсвэл алгасаад шууд үргэлжлүүлж болно)</span></div>
+    </div>
+    <div class="mm-intent-grid" id="mmIntentGrid"></div>
+    <button class="mm-start-btn" style="width:100%;margin-top:20px;" onclick="mmConfirmIntent()">Үргэлжлүүлэх →</button>
+
+    <div class="mm-comments-section">
+      <div class="mm-comments-title">💬 Хүмүүс бие биедээ туслах хэсэг</div>
+      <div class="mm-comments-sub">Мэргэжлээ сонгоход бэрхшээлтэй байгаа бол доор асуугаарай, эсвэл өөрийн туршлагаараа бусдад туслаарай.</div>
+      <div class="mm-comment-form">
+        <textarea class="mm-comment-inp" id="mmCommentInpIntent" placeholder="Коммент бичих…" rows="2" maxlength="500"></textarea>
+        <button class="mm-comment-btn" onclick="mmPostComment('mmCommentInpIntent')">Илгээх</button>
+      </div>
+      <div class="mm-comments-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MM QUIZ -->
+<div id="mmQuizScreen" class="screen mm-bg">
+  <div class="mm-quiz-wrap">
+    <div class="mm-quiz-top">
+      <button class="mm-back-btn" id="mmBackBtn" onclick="mmGoBack()" style="display:none;">← Өмнөх</button>
+      <span class="mm-progress-txt" id="mmProgressTxt">Асуулт 1 / 119</span>
+      <button class="mm-back-btn" onclick="mmExitQuiz()">✕ Гарах</button>
+    </div>
+    <div class="mm-progress-track"><div class="mm-progress-bar" id="mmProgressBar"></div></div>
+    <div class="mm-q-card">
+      <div class="mm-q-text" id="mmQText"></div>
+    </div>
+    <div class="mm-likert-grid" id="mmLikertGrid">
+      <button class="mm-likert-btn" data-val="1" onclick="mmAnswer(1)"><span class="mm-likert-num">1</span><span class="mm-likert-lbl">Огт үгүй</span></button>
+      <button class="mm-likert-btn" data-val="2" onclick="mmAnswer(2)"><span class="mm-likert-num">2</span><span class="mm-likert-lbl">Бага зэрэг үгүй</span></button>
+      <button class="mm-likert-btn" data-val="3" onclick="mmAnswer(3)"><span class="mm-likert-num">3</span><span class="mm-likert-lbl">Дунд зэрэг</span></button>
+      <button class="mm-likert-btn" data-val="4" onclick="mmAnswer(4)"><span class="mm-likert-num">4</span><span class="mm-likert-lbl">Бага зэрэг тийм</span></button>
+      <button class="mm-likert-btn" data-val="5" onclick="mmAnswer(5)"><span class="mm-likert-num">5</span><span class="mm-likert-lbl">Маш их тийм</span></button>
+    </div>
+
+    <div class="mm-comments-section">
+      <div class="mm-comments-title">💬 Хүмүүс бие биедээ туслах хэсэг</div>
+      <div class="mm-comments-sub">Тестээ бөглөж байхдаа доор бусдын коммент, зөвлөгөөг уншиж болно.</div>
+      <div class="mm-comment-form">
+        <textarea class="mm-comment-inp" id="mmCommentInpQuiz" placeholder="Коммент бичих…" rows="2" maxlength="500"></textarea>
+        <button class="mm-comment-btn" onclick="mmPostComment('mmCommentInpQuiz')">Илгээх</button>
+      </div>
+      <div class="mm-comments-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MM RESULTS -->
+<div id="mmResultsScreen" class="screen mm-bg">
+  <div class="mm-results-wrap">
+    <div class="mm-eyebrow">🎉 ТАНЫ ҮР ДҮН</div>
+    <h2 class="mm-title" style="font-size:32px;">ТАНД ТОХИРОХ<br>МЭРГЭЖИЛ</h2>
+    <div id="mmResultsList"></div>
+    <div id="mmDetailedWriteup"></div>
+    <div class="mm-other-wrap" id="mmOtherResults"></div>
+    <div class="mm-results-btns">
+      <button class="mm-start-btn" onclick="mmStartQuiz()">↻ Дахин тестлэх</button>
+      <button class="mm-back-btn" style="width:100%;margin-top:10px;" onclick="qrOpenFolder(qrCurFolderId)">← Буцах</button>
+    </div>
+    <div class="mm-comments-section">
+      <div class="mm-comments-title">💬 Хүмүүс бие биедээ туслах хэсэг</div>
+      <div class="mm-comments-sub">Үр дүнгээ бусадтай хуваалцаж, туршлагаараа дэмжээрэй.</div>
+      <div class="mm-comment-form">
+        <textarea class="mm-comment-inp" id="mmCommentInp2" placeholder="Коммент бичих…" rows="2" maxlength="500"></textarea>
+        <button class="mm-comment-btn" onclick="mmPostComment('mmCommentInp2')">Илгээх</button>
+      </div>
+      <div class="mm-comments-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- QR EXAM MODE: RANDOM TEST — бүх 100 асуулт зэрэг харагдана -->
+<div id="qrExamScreen" class="screen qr-exam-bg">
+  <div class="qr-exam-sticker qr-exam-sticker-1">📝</div>
+  <div class="qr-exam-sticker qr-exam-sticker-2">⭐</div>
+  <div class="qr-exam-sticker qr-exam-sticker-3">🎓</div>
+  <div class="qr-exam-topbar">
+    <button class="qr-exam-back" onclick="qrExamExit()">← Гарах</button>
+    <div class="qr-exam-title" id="qrExamTitle">RANDOM TEST</div>
+    <button class="qr-exam-finish-btn-top" id="qrExamFinishBtnTop" onclick="qrExamFinishManual()">✓ Дуусгах</button>
+    <div class="qr-exam-timer">⏱ <span id="qrExamTimerTxt">100:00</span></div>
+  </div>
+  <div id="qrExamMediaPanel" style="display:none;"></div>
+  <div class="qr-exam-body">
+    <div class="qr-exam-main">
+      <div id="qrExamQList"></div>
+      <button class="qr-exam-finish-btn" id="qrExamFinishBtn" onclick="qrExamFinishManual()">✓ Тестийг дуусгах</button>
+      <div class="qr-exam-summary" id="qrExamSummary" style="display:none;"></div>
+    </div>
+    <div class="qr-exam-navpanel" id="qrExamNavPanel">
+      <div class="qr-exam-navtitle">📋 Явцын хяналт</div>
+      <div class="qr-exam-navgrid" id="qrExamNavGrid"></div>
+      <div class="qr-exam-navlegend">
+        <span class="qr-exam-navnum-mini"></span> Бөглөөгүй
+        <span class="qr-exam-navnum-mini answered"></span> Бөглөсөн
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QR EDITOR: асуулт сан засварлах -->
+<!-- QR FOLDER VIEW: фолдер дотор орсны дараах тоглолтын жагсаалт -->
+<div id="qrFolderScreen" class="screen">
+  <div class="qr-editor-wrap">
+    <div class="qr-editor-head">
+      <button class="qr-back-btn" onclick="showQRHome()">← Фолдерууд руу буцах</button>
+      <div class="qr-folder-view-title" id="qrFolderViewTitle">📁 Фолдер</div>
+    </div>
+    <div class="rounds-grid" id="qrFolderQuizGrid"></div>
+  </div>
+</div>
+
+<div id="qrEditorScreen" class="screen">
+  <div class="qr-editor-wrap">
+    <div class="qr-editor-head">
+      <button class="qr-back-btn" onclick="showQRHome()">← Буцах</button>
+      <input class="qr-quiz-name-inp" id="qrQuizNameInp" type="text" placeholder="Асуултын сангийн нэр..." maxlength="60">
+      <button class="btn-save" id="qrEditorSaveBtn" onclick="qrSaveQuizMeta()">💾 Хадгалах</button>
+    </div>
+    <div class="qr-folder-select-wrap" id="qrFolderSelectWrap" style="display:none;">
+      <label>📁 Фолдер (зөвхөн админ)</label>
+      <button type="button" class="qr-folder-pick-btn" id="qrFolderPickBtn" onclick="qrOpenFolderPicker()">— Ангилалгүй — <span style="opacity:.6;">▾</span></button>
+    </div>
+    <div class="qr-media-wrap">
+      <label>🎧 Медиа төрөл (IELTS бэлтгэлд зориулав)</label>
+      <select id="qrMediaType" class="qr-media-type-select" onchange="qrUpdateMediaFieldsVisibility()">
+        <option value="none">— Ердийн тест (медиагүй) —</option>
+        <option value="listening">🎧 Listening — YouTube audio дагалддаг</option>
+        <option value="reading">📖 Reading — Унших пассаж дагалддаг</option>
+      </select>
+      <div id="qrMediaUrlWrap" style="display:none;margin-top:10px;">
+        <input class="qr-media-url-inp" id="qrMediaUrlInp" type="text" placeholder="https://youtube.com/watch?v=... (сонсгох аудио/видео холбоос)">
+      </div>
+      <div id="qrMediaTextWrap" style="display:none;margin-top:10px;">
+        <textarea class="qr-media-text-inp" id="qrMediaTextInp" rows="8" placeholder="Уншигдах пассаж/текстээ энд бүхэлд нь буулгана уу..."></textarea>
+      </div>
+    </div>
+    <div id="qrQuestionList" class="qr-question-list"></div>
+
+    <!-- Дэд фолдер руу drill-down хийж болдог фолдер сонгох цонх -->
+    <div class="m-overlay" id="qrFolderPickerOv">
+      <div class="m-box" style="max-width:520px;">
+        <div class="qr-qm-title">📁 Фолдер сонгох</div>
+        <div class="qr-fp-breadcrumb" id="qrFpBreadcrumb"></div>
+        <div class="qr-fp-list" id="qrFpList"></div>
+        <div class="qr-fp-actions">
+          <button class="qr-fp-select-here-btn" onclick="qrFolderPickerChooseCurrent()">✓ Энэ фолдерт хадгалах</button>
+          <button class="btn-cancel" onclick="qrCloseFolderPicker()">Хаах</button>
+        </div>
+      </div>
+    </div>
+    <button class="qr-add-q-btn" onclick="qrOpenQEditor(-1)">+ Асуулт нэмэх</button>
+  </div>
+</div>
+
+<!-- QR HOST LOBBY: PIN + QR + тоглогчдын жагсаалт -->
+<div id="qrHostLobbyScreen" class="screen">
+  <div class="qr-lobby-wrap">
+    <div class="qr-lobby-quizname" id="qrLobbyQuizName"></div>
+    <div class="qr-pin-label">ТОГЛОГЧИД bolorgames.com/?join ХАЯГААР ОРЖ ДООРХ КОДЫГ ОРУУЛНА</div>
+    <div class="qr-pin-box" id="qrPinBox">------</div>
+    <img class="qr-qrimg" id="qrQrImg" alt="QR код">
+    <div class="qr-players-count"><span id="qrPlayerCount">0</span> тоглогч холбогдсон</div>
+    <div class="qr-players-list" id="qrLobbyPlayers"></div>
+    <button class="qr-start-btn" id="qrStartBtn" onclick="qrHostBeginGame()" disabled>Тоглогч хүлээж байна…</button>
+    <button class="qr-cancel-btn" onclick="qrHostCancelSession()">Цуцлах</button>
+  </div>
+</div>
+
+<!-- QR HOST GAME: асуулт харуулах / хариу үзүүлэх / лидерборд -->
+<div id="qrHostGameScreen" class="screen">
+  <div class="qr-host-wrap">
+    <div class="qr-host-top">
+      <span id="qrHostQNum">Асуулт 1</span>
+      <div class="qr-host-timerbar-wrap"><div class="qr-host-timerbar" id="qrHostTimerBar"></div></div>
+      <span id="qrHostAnsCount">0 хариулсан</span>
+    </div>
+    <div class="qr-host-qtext" id="qrHostQText"></div>
+    <img class="qr-q-img" id="qrHostQImg" style="display:none;">
+    <div class="qr-host-opts" id="qrHostOpts"></div>
+    <div class="qr-host-actions" id="qrHostActions"></div>
+    <div class="qr-host-leaderboard" id="qrHostLeaderboard" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- QR SOLO: ганцаараа тоглох дэлгэц -->
+<div id="qrSoloScreen" class="screen">
+  <div class="qr-solo-wrap">
+    <div class="qr-solo-top">
+      <button class="qr-back-btn" onclick="qrSoloExit()">← Гарах</button>
+      <span id="qrSoloQNum">Асуулт 1/10</span>
+      <button class="qr-solo-finish-early-btn" onclick="qrSoloFinishEarly()">✓ Одоо дуусгах</button>
+      <span id="qrSoloScore">0 оноо</span>
+    </div>
+    <div id="qrSoloMediaPanel" style="display:none;"></div>
+    <div class="qr-host-timerbar-wrap"><div class="qr-host-timerbar" id="qrSoloTimerBar"></div></div>
+    <div class="qr-solo-qtext" id="qrSoloQText"></div>
+    <img class="qr-q-img" id="qrSoloQImg" style="display:none;">
+    <div class="qr-solo-opts" id="qrSoloOpts"></div>
+    <div class="qr-multi-hint" id="qrSoloMultiHint" style="display:none;">Бүх зөв хариултаа сонгоод Илгээх дарна уу</div>
+    <button class="qr-multi-submit-btn" id="qrSoloMultiSubmitBtn" style="display:none;" onclick="qrSoloSubmitMulti()">✓ Илгээх</button>
+    <div class="qr-solo-feedback" id="qrSoloFeedback" style="display:none;"></div>
+    <div class="qr-solo-final" id="qrSoloFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- QR JOIN: код + нэр оруулах -->
+<div id="qrJoinScreen" class="screen">
+  <div class="qr-join-wrap">
+    <div class="logo-eyebrow" style="color:#8b5cf6;">⚡ QuizRush</div>
+    <h2 class="logo-title qr-gold" style="font-size:38px;">НЭГДЭХ</h2>
+    <input class="qr-code-inp" id="qrJoinCodeInp" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="off">
+    <input class="qr-name-inp" id="qrJoinNameInp" type="text" placeholder="Таны нэр..." maxlength="20" autocomplete="off">
+    <button class="qr-join-go-btn" id="qrJoinGoBtn" onclick="qrDoJoin()">Нэгдэх →</button>
+    <div class="qr-join-err" id="qrJoinErr"></div>
+  </div>
+</div>
+
+<!-- QR PLAY: тоглогчийн (утасны) дэлгэц -->
+<div id="qrPlayScreen" class="screen">
+  <div class="qr-play-wrap">
+    <div class="qr-play-waiting" id="qrPlayWaiting">
+      <div class="qr-play-pulse">⚡</div>
+      <div class="qr-play-wait-txt">Хостыг эхлүүлэхийг хүлээж байна…</div>
+      <div class="qr-play-name" id="qrPlayMyName"></div>
+    </div>
+    <div class="qr-play-question" id="qrPlayQuestion" style="display:none;">
+      <div class="qr-play-timer" id="qrPlayTimer"></div>
+      <img class="qr-q-img qr-q-img-play" id="qrPlayQImg" style="display:none;">
+      <div class="qr-play-shapes" id="qrPlayShapes"></div>
+      <div class="qr-multi-hint" id="qrMultiHint" style="display:none;">Бүх зөв хариултаа сонгоод Илгээх дарна уу</div>
+      <button class="qr-multi-submit-btn" id="qrMultiSubmitBtn" style="display:none;" onclick="qrSubmitMultiAnswer()">✓ Илгээх</button>
+    </div>
+    <div class="qr-play-submitted" id="qrPlaySubmitted" style="display:none;">
+      <div class="qr-play-pulse" id="qrSubmitPulse">✓</div>
+      <div class="qr-play-wait-txt" id="qrSubmitTxt">Хариулт илгээгдлээ! Хүлээнэ үү…</div>
+      <button class="qr-stuck-btn" id="qrStuckBtn" style="display:none;" onclick="qrRetryLastAnswer()">⟳ Дахин илгээх</button>
+    </div>
+    <div class="qr-play-reveal" id="qrPlayReveal" style="display:none;"></div>
+    <div class="qr-play-final" id="qrPlayFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ФОЛДЕР ЗАСАХ МОДАЛЬ (нэр + дүрс) -->
+<div class="m-overlay" id="qrFolderEditOv">
+  <div class="modal qr-folder-edit-modal">
+    <button class="qq-modal-close" onclick="qrCloseFolderEdit()">✕</button>
+    <div class="qr-qm-title">📁 Фолдер засах</div>
+    <input class="qr-quiz-name-inp" id="qrFolderEditNameInp" type="text" placeholder="Фолдерийн нэр..." maxlength="60" style="width:100%;margin-bottom:16px;">
+    <div class="qr-qm-field" style="margin-bottom:6px;"><label>Дүрс сонгох</label></div>
+    <div class="qr-folder-icon-picker" id="qrFolderIconPicker"></div>
+    <div class="qr-qm-field" style="margin:18px 0 6px;"><label>Байрлал (аль фолдер дотор байх вэ)</label></div>
+    <select id="qrFolderEditParentSelect" class="qr-time-select"></select>
+    <button class="btn-save" style="width:100%;margin-top:18px;" onclick="qrSaveFolderEdit()">💾 Хадгалах</button>
+  </div>
+</div>
+
+<!-- ХУГАЦАА ТОХИРУУЛАХ МОДАЛЬ (тоглоом эхлэхийн өмнө) -->
+<div class="m-overlay" id="qrTimeAdjustOv">
+  <div class="modal qr-time-modal">
+    <button class="qq-modal-close" onclick="qrCloseTimeAdjust()">✕</button>
+    <div class="qr-qm-title">⏱ Хугацааны тохиргоо</div>
+    <div class="qr-playmode-row" id="qrPlayModeRow" style="display:none;">
+      <button class="qr-playmode-btn selected" data-mode="sequential" onclick="qrSetPlayMode('sequential')">
+        <span class="qr-playmode-icon">📄</span>
+        <span class="qr-playmode-lbl">1 нэгээр<br><span class="qr-playmode-sub">Асуулт дараалж гарна</span></span>
+      </button>
+      <button class="qr-playmode-btn" data-mode="examall" onclick="qrSetPlayMode('examall')">
+        <span class="qr-playmode-icon">📋</span>
+        <span class="qr-playmode-lbl">Бүгд зэрэг<br><span class="qr-playmode-sub">Random Test шиг</span></span>
+      </button>
+    </div>
+    <div class="qr-time-desc">Асуулт бүрийн хугацаанд хэдэн секунд нэмэх/хасахаа сонгоно уу (зохиогчийн тохируулсан хугацаа дээр нэмэгдэнэ).</div>
+    <select id="qrTimeAdjustSelect" class="qr-time-select">
+      <option value="-20">−20 секунд</option>
+      <option value="-15">−15 секунд</option>
+      <option value="-10">−10 секунд</option>
+      <option value="-5">−5 секунд</option>
+      <option value="0" selected>Хэвийн (өөрчлөхгүй)</option>
+      <option value="5">+5 секунд</option>
+      <option value="10">+10 секунд</option>
+      <option value="15">+15 секунд</option>
+      <option value="20">+20 секунд</option>
+      <option value="30">+30 секунд</option>
+      <option value="45">+45 секунд</option>
+      <option value="60">+60 секунд</option>
+    </select>
+    <button class="btn-save" style="width:100%;margin-top:18px;" onclick="qrConfirmTimeAdjust()">▶ Эхлүүлэх</button>
+  </div>
+</div>
+
+<!-- QR QUESTION EDITOR MODAL -->
+<div class="m-overlay" id="qrQOv">
+  <div class="modal qr-qmodal">
+    <button class="qq-modal-close" onclick="qrCloseQEditor()">✕</button>
+    <div class="qr-qm-title">Асуулт засах</div>
+    <textarea class="qr-qm-text" id="qrQmText" placeholder="Асуултын текст..." maxlength="200" rows="3"></textarea>
+    <div class="qr-qm-img-wrap" id="qrQmImgWrap">
+      <input id="qrQmImgFile" type="file" accept="image/*" style="display:none;" onchange="qrQmImgUpload(this)">
+      <div id="qrQmImgPreviewBox" onclick="document.getElementById('qrQmImgFile').click()">
+        <img id="qrQmImgPreview" style="display:none;">
+        <div id="qrQmImgPlaceholder">🖼️ Асуултад зураг нэмэх (заавал биш)</div>
+      </div>
+      <button type="button" id="qrQmImgRemoveBtn" style="display:none;" onclick="qrQmImgRemove(event)">✕ Зураг хасах</button>
+    </div>
+    <div class="qr-qm-opts" id="qrQmOpts"></div>
+    <div class="qr-qm-multi-hint" id="qrQmMultiHint"></div>
+    <div class="qr-qm-row">
+      <div class="qr-qm-field">
+        <label>Хугацаа (сек)</label>
+        <select id="qrQmTime"><option value="10">10</option><option value="20" selected>20</option><option value="30">30</option><option value="45">45</option><option value="60">60</option></select>
+      </div>
+      <div class="qr-qm-field">
+        <label>Оноо</label>
+        <select id="qrQmPts"><option value="500">500</option><option value="1000" selected>1000</option><option value="1500">1500</option><option value="2000">2000</option></select>
+      </div>
+    </div>
+    <div class="qr-qm-footer">
+      <button class="qr-qm-del" id="qrQmDelBtn" onclick="qrDeleteQFromEditor()">🗑 Устгах</button>
+      <button class="btn-save" onclick="qrSaveQFromEditor()">✓ Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════ COUNTDASH ══════════════════════ -->
+
+<!-- CD HOME -->
+<div id="cdHomeScreen" class="screen">
+  <div class="cd-float-bg" id="cdFloatBg"></div>
+  <div class="logo-eyebrow" style="color:#10b981;">🔢 Live Counting Arena</div>
+  <h2 class="logo-title cd-teal">COUNT<br>DASH</h2>
+  <div class="logo-sub">Хараад тоол, хурдан бич!</div>
+  <div class="qr-hero-btns">
+    <button class="cd-btn-join-big" onclick="showCDJoin()">🎮 Кодоор нэгдэх</button>
+  </div>
+  <div class="rounds-section">
+    <div class="rounds-title" style="color:rgba(16,185,129,.6);">— Миний тоолгын сангууд —</div>
+    <div class="rounds-grid" id="cdQuizGrid"></div>
+  </div>
+  <div id="cdImportWrap" style="display:none;margin-top:16px;text-align:center;">
+    <label class="cd-import-lbl">
+      📥 JSON import<input type="file" accept=".json" style="display:none;" onchange="cdImportJSON(this)">
+    </label>
+  </div>
+</div>
+
+<!-- CD EDITOR -->
+<div id="cdEditorScreen" class="screen">
+  <div class="qr-editor-wrap">
+    <div class="qr-editor-head">
+      <button class="qr-back-btn cd" onclick="showCDHome()">← Буцах</button>
+      <input class="qr-quiz-name-inp cd" id="cdQuizNameInp" type="text" placeholder="Тоолгын сангийн нэр..." maxlength="60">
+      <button class="btn-save cd" onclick="cdSaveQuizMeta()">💾 Хадгалах</button>
+    </div>
+    <div id="cdRoundList" class="qr-question-list"></div>
+    <button class="qr-add-q-btn cd" onclick="cdOpenREditor(-1)">+ Раунд нэмэх</button>
+  </div>
+</div>
+
+<!-- CD HOST LOBBY -->
+<div id="cdHostLobbyScreen" class="screen">
+  <div class="qr-lobby-wrap">
+    <div class="qr-lobby-quizname" id="cdLobbyQuizName"></div>
+    <div class="qr-pin-label">ТОГЛОГЧИД bolorgames.com/?cjoin ХАЯГААР ОРЖ ДООРХ КОДЫГ ОРУУЛНА</div>
+    <div class="qr-pin-box cd" id="cdPinBox">------</div>
+    <img class="qr-qrimg cd" id="cdQrImg" alt="QR код">
+    <div class="qr-players-count cd"><span id="cdPlayerCount">0</span> тоглогч холбогдсон</div>
+    <div class="qr-players-list" id="cdLobbyPlayers"></div>
+    <button class="qr-start-btn cd" id="cdStartBtn" onclick="cdHostBeginGame()" disabled>Тоглогч хүлээж байна…</button>
+    <button class="qr-cancel-btn" onclick="cdHostCancelSession()">Цуцлах</button>
+  </div>
+</div>
+
+<!-- CD HOST GAME -->
+<div id="cdHostGameScreen" class="screen">
+  <div class="qr-host-wrap">
+    <div class="qr-host-top cd">
+      <span id="cdHostQNum">Раунд 1</span>
+      <div class="qr-host-timerbar-wrap"><div class="qr-host-timerbar cd" id="cdHostTimerBar"></div></div>
+      <span id="cdHostAnsCount">0 хариулсан</span>
+    </div>
+    <div class="cd-stage-row">
+      <div class="cd-stage-wrap">
+        <div class="cd-stage" id="cdStage"></div>
+        <div class="cd-stage-cover" id="cdStageCover">
+          <div class="cd-stage-cover-icon"></div>
+          <div class="cd-stage-cover-txt" id="cdCoverCountdown">15</div>
+        </div>
+      </div>
+      <div class="cd-live-feed">
+        <div class="cd-live-feed-title">✓ Хариулсан</div>
+        <div class="cd-live-feed-list" id="cdLiveFeedList"><div class="cd-feed-empty">Одоогоор хэн ч хариулаагүй</div></div>
+      </div>
+    </div>
+    <div class="qr-host-actions" id="cdHostActions"></div>
+    <div class="cd-autonext-txt" id="cdAutoNextTxt" style="display:none;"></div>
+    <div class="qr-host-leaderboard cd" id="cdHostLeaderboard" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- CD JOIN -->
+<div id="cdJoinScreen" class="screen">
+  <div class="qr-join-wrap">
+    <div class="logo-eyebrow" style="color:#10b981;">🔢 CountDash</div>
+    <h2 class="logo-title cd-teal" style="font-size:38px;">НЭГДЭХ</h2>
+    <input class="qr-code-inp cd" id="cdJoinCodeInp" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="off">
+    <input class="qr-name-inp cd" id="cdJoinNameInp" type="text" placeholder="Таны нэр..." maxlength="20" autocomplete="off">
+    <button class="qr-join-go-btn cd" id="cdJoinGoBtn" onclick="cdDoJoin()">Нэгдэх →</button>
+    <div class="qr-join-err" id="cdJoinErr"></div>
+  </div>
+</div>
+
+<!-- CD PLAY -->
+<div id="cdPlayScreen" class="screen">
+  <div class="qr-play-wrap">
+    <div class="qr-play-waiting" id="cdPlayWaiting">
+      <div class="qr-play-pulse cd">🔢</div>
+      <div class="qr-play-wait-txt">Хостыг эхлүүлэхийг хүлээж байна…</div>
+      <div class="qr-play-name" id="cdPlayMyName"></div>
+    </div>
+    <div class="cd-play-watch" id="cdPlayWatch" style="display:none;">
+      <div class="cd-play-watch-icon">👀</div>
+      <div class="qr-play-wait-txt">Том дэлгэцийг хараад тоолоорой!</div>
+      <div class="cd-play-watch-timer" id="cdPlayWatchTimer"></div>
+    </div>
+    <div class="cd-play-input" id="cdPlayInput" style="display:none;">
+      <div class="qr-play-timer" id="cdPlayTimer"></div>
+      <div class="cd-stepper">
+        <button class="cd-step-btn minus" onclick="cdStepGuess(-1)">−</button>
+        <input class="cd-step-num" id="cdGuessNum" type="text" inputmode="numeric" pattern="[0-9]*" value="0" maxlength="3" oninput="cdGuessTyped(this.value)" onfocus="this.select()">
+        <button class="cd-step-btn plus" onclick="cdStepGuess(1)">+</button>
+      </div>
+      <button class="cd-submit-btn" onclick="cdSubmitGuess()">✓ Илгээх</button>
+    </div>
+    <div class="qr-play-submitted" id="cdPlaySubmitted" style="display:none;">
+      <div class="qr-play-pulse cd" id="cdSubmitPulse">✓</div>
+      <div class="qr-play-wait-txt" id="cdSubmitTxt">Хариулт илгээгдлээ! Хүлээнэ үү…</div>
+      <button class="qr-stuck-btn" id="cdStuckBtn" style="display:none;" onclick="cdRetryLastAnswer()">⟳ Дахин илгээх</button>
+    </div>
+    <div class="qr-play-reveal cd" id="cdPlayReveal" style="display:none;"></div>
+    <div class="qr-play-final cd" id="cdPlayFinal" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- CD ROUND EDITOR MODAL -->
+<div class="m-overlay" id="cdROv">
+  <div class="modal qr-qmodal cd">
+    <button class="qq-modal-close" onclick="cdCloseREditor()">✕</button>
+    <div class="qr-qm-title">Раунд засах</div>
+    <div class="cd-shape-picker" id="cdShapePicker"></div>
+    <div class="qr-qm-row">
+      <div class="qr-qm-field">
+        <label>Хэдийг харуулах вэ?</label>
+        <input type="number" id="cdRmCount" min="3" max="30" value="8" class="cd-num-inp">
+      </div>
+      <div class="qr-qm-field">
+        <label>Оноо</label>
+        <select id="cdRmPts"><option value="500">500</option><option value="1000" selected>1000</option><option value="1500">1500</option><option value="2000">2000</option></select>
+      </div>
+    </div>
+    <div class="qr-qm-row">
+      <div class="qr-qm-field">
+        <label>Харуулах хугацаа (сек)</label>
+        <select id="cdRmShow"><option value="3">3</option><option value="5" selected>5</option><option value="7">7</option><option value="10">10</option></select>
+      </div>
+      <div class="qr-qm-field">
+        <label>Хариулах хугацаа (сек)</label>
+        <select id="cdRmAns"><option value="10">10</option><option value="15" selected>15</option><option value="20">20</option><option value="30">30</option></select>
+      </div>
+    </div>
+    <div class="qr-qm-footer">
+      <button class="qr-qm-del" id="cdRmDelBtn" onclick="cdDeleteRFromEditor()">🗑 Устгах</button>
+      <button class="btn-save" onclick="cdSaveRFromEditor()">✓ Хадгалах</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="app.js?v=20261010b"></script>
+<script nomodule>
+document.addEventListener('DOMContentLoaded',function(){
+  var d=document.createElement('div');
+  d.setAttribute('style','position:fixed;top:0;left:0;right:0;bottom:0;z-index:999999;background:#04060f;color:#fff;display:block;text-align:center;padding:80px 20px;font-family:Arial,sans-serif;');
+  d.innerHTML='<div style="font-size:44px;margin-bottom:16px;">🎮</div>'
+    +'<div style="font-size:22px;font-weight:bold;margin-bottom:12px;color:#00f5ff;">Bolor Games</div>'
+    +'<div style="font-size:15px;line-height:1.7;color:#ccd;">Таны ашиглаж буй хөтөч (browser) хуучирсан тул сайт ажиллах боломжгүй.<br>'
+    +'<b>Google Chrome</b>, <b>Microsoft Edge</b> эсвэл <b>Firefox</b> ашиглана уу.<br><br>'
+    +'<span style="color:#889;">Internet Explorer-ийг Microsoft 2022 онд зогсоосон тул орчин үеийн сайтууд дэмждэггүй.</span></div>';
+  document.body.appendChild(d);
+});
+</script>
+</body></html>
